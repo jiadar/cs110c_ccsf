@@ -13,6 +13,7 @@ TESTER="TestResizableArrayBag"
 LIBDIR=$DEVHOME/$PROJ/lib
 BINDIR=$DEVHOME/$PROJ/bin/$PKG
 SRCDIR=$DEVHOME/$PROJ/src/$PKG
+DOCDIR=$DEVHOME/doc/$PKG
 
 if [ ! -d $LIBDIR ] ; then mkdir -p $LIBDIR ; fi
 if [ ! -d $BINDIR ] ; then mkdir -p $BINDIR ; fi
@@ -60,7 +61,7 @@ fi
     VS=$(date +%y%m%d-%H%M%S)
     tar czf tgz/$PKG-$VS.tgz doc/$PKG src/$PKG bin/$PKG
     ls -l tgz/$PKG-$VS.tgz
-    find * -mtime +3 -exec rm {} \;
+    find tgz/* -mtime +3 -exec rm {} \;
     popd >/dev/null 2>&1
 #fi
 
