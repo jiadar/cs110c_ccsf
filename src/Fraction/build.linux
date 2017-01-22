@@ -45,7 +45,7 @@ fi
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
-#if test "$(find $SRCDIR/.timestamp -mmin +1)" ; then
+#if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
     pushd $SRCDIR >/dev/null 2>&1
     git add -u 
     git commit -m "Auto commit"
