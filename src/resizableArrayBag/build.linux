@@ -59,9 +59,10 @@ fi
     pushd $DEVHOME/$PROJ >/dev/null 2>&1
     if [ ! -d $DEVHOME/$PROJ/tgz ] ; then mkdir $DEVHOME/$PROJ/tgz; fi 
     VS=$(date +%y%m%d-%H%M%S)
-    tar czf tgz/$PKG-$VS.tgz doc/$PKG src/$PKG bin/$PKG
+#    tar czf tgz/$PKG-$VS.tgz doc/$PKG src/$PKG bin/$PKG
+    tar czf tgz/$PKG-$VS.tgz  src/$PKG 
     ls -l tgz/$PKG-$VS.tgz
-    find tgz/* -mtime +3 -exec rm {} \;
+#   find tgz/* -mtime +3 -exec rm {} \;
     popd >/dev/null 2>&1
 #fi
 
