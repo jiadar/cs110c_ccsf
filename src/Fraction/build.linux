@@ -35,30 +35,31 @@ fi
 java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar org.junit.runner.JUnitCore $TESTER
 
 if [ "$JAVADOC" = true ] ; then
-    pushd $SRCDIR
+    pushd $SRCDIR >/dev/null 2>&1
     if [ "$VERBOSE" == true ] ; then
         echo "javadoc -d $DEVHOME/../../doc/$PKG $CLASSES"
     fi  
     javadoc -d $SRCDIR/../../doc/$PROJNAME $CLASSES
-    popd
+    popd >/dev/null 2>&1
 fi
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
 #if test "$(find $SRCDIR/.timestamp -mmin +1)" ; then
-    pushd $SRCDIR
-    git add -u
+    pushd $SRCDIR >/dev/null 2>&1
+    git add -u 
     git commit -m "Auto commit"
     git push
     touch .timestamp
-    popd
+    popd >/dev/null 2>&1
 
     # tgz the project for uploading
-    pushd $DEVHOME/$PROJ
+    pushd $DEVHOME/$PROJ >/dev/null 2>&1
     if [ ! -d $DEVHOME/$PROJ/tgz ] ; then mkdir $DEVHOME/$PROJ/tgz; fi 
     VS=$(date +%y%m%d-%H%M%S)
     tar czf tgz/$PKG-$VS.tgz doc/$PKG src/$PKG bin/$PKG
     ls -l tgz/$PKG-$VS.tgz
+    popd >/dev/null 2>&1
 #fi
 
 
