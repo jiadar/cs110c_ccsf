@@ -57,7 +57,8 @@ fi
     pushd $DEVHOME/$PROJ
     if [ ! -d $DEVHOME/$PROJ/tgz ] ; then mkdir $DEVHOME/$PROJ/tgz; fi 
     VS=$(date +%y%m%d-%H%M%S)
-    tar cvzf tgz/$PKG-$VS.tgz doc/$PKG src/$PKG bin/$PKG
+    tar czf tgz/$PKG-$VS.tgz doc/$PKG src/$PKG bin/$PKG
+    ls -l tgz/$PKG-$VS.tgz
 #fi
 
 
