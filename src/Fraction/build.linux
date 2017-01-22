@@ -59,6 +59,7 @@ fi
     VS=$(date +%y%m%d-%H%M%S)
     tar czf tgz/$PKG-$VS.tgz doc/$PKG src/$PKG bin/$PKG
     ls -l tgz/$PKG-$VS.tgz
+    find * -mtime +3 -exec rm {} \;
     popd >/dev/null 2>&1
 #fi
 
