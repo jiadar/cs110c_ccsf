@@ -1,0 +1,24 @@
+#!/bin/bash
+VERBOSE=false
+PROJNAME="Fraction"
+LIBDIR=/Users/ross/work/cs110c_ccsf/lib
+BINDIR=/Users/ross/work/cs110c_ccsf/bin
+SRCDIR=/Users/ross/work/cs110c_ccsf/src/$PROJNAME
+CLASSES="Fraction.java MyFraction.java TestMyFraction.java"
+TESTER="TestMyFraction"
+
+for CLASS in $CLASSES
+do
+    if [ "$VERBOSE" = true ] ; then
+	echo "javac -d $BINDIR $SRCDIR/$CLASS"
+    fi
+    javac -d $BINDIR $SRCDIR/$CLASS
+done
+
+if [ "$VERBOSE" = true ] ; then
+    echo "java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar org.junit.runner.JUnitCore $TESTER"
+    echo
+fi
+
+java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar org.junit.runner.JUnitCore $TESTER
+
