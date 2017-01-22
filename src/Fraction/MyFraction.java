@@ -1,12 +1,25 @@
+/*
+  Ross Capdeville
+  Jan 21, 2017
+
+  Implements the Fraction Interface
+
+*/
 
 import java.util.logging.*;
 
+/** MyFraction implements the Fraction interface */
+
 public class MyFraction implements Fraction {
+
+  // Use this to get some logging as necessary in the unit test output
   private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+  // Prof. said to use double instead of int during class
   private double num;
   private double dem;
 
+  // Instantiate a new fraction with a numerator and denominator 
   public MyFraction(double num, double dem) {
     this.num=num;
     this.dem=dem;
@@ -74,10 +87,16 @@ public class MyFraction implements Fraction {
     return result;
   }
 
+	/** 
+	 * Simplify a copy of myself and the argument, and compare them for
+	 * equality
+	 */
   public boolean equals(Fraction f) {
-    this.simplify();
-    f.simplify();
-    return this.getNum()==f.getNum() && this.getDem() == f.getDem() ? true : false;
+		MyFraction f1=new MyFraction(this.getNum(),this.getDem());
+		MyFraction f2=new MyFraction(f.getNum(), f.getDem());
+		f1.simplify();
+		f2.simplify();
+    return f1.getNum()==f2.getNum() && f1.getDem() == f2.getDem() ? true : false;
   }
 
   public void simplify() {
