@@ -7,7 +7,7 @@ PKG="resizableArrayBag"
 VERBOSE=false
 JAVADOC=false
 CLASSES="BagInterface.java ResizableArrayBag.java TestResizableArrayBag.java"
-TESTER="TestResizableArrayBag"
+TESTER="TestResizableArrayBag.java"
 
 # Should not have to configure anything below 
 LIBDIR=$DEVHOME/$PROJ/lib
