@@ -40,7 +40,7 @@ if [ "$JAVADOC" = true ] ; then
     if [ "$VERBOSE" == true ] ; then
         echo "javadoc -d $DEVHOME/../../doc/$PKG $CLASSES"
     fi  
-    javadoc -d $SRCDIR/../../doc/$PROJNAME $CLASSES
+    javadoc -d $DOCDIR $CLASSES
     popd >/dev/null 2>&1
 fi
 
