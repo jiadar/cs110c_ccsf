@@ -24,7 +24,7 @@ do
     if [ "$VERBOSE" = true ] ; then
         echo "javac -d $BINDIR $SRCDIR/$CLASS"
     fi
-    javac -d $BINDIR $SRCDIR/$CLASS
+    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$CLASS
 done
 
 if [ "$VERBOSE" = true ] ; then
