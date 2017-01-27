@@ -4,6 +4,8 @@ import java.sql.Array;
 import java.util.Arrays;
 import java.util.logging.*;
 
+import javax.print.attribute.standard.NumberOfDocuments;
+
 /**
  * A class that implements a bag of objects by using an array.
  * The bag is never full.
@@ -163,6 +165,15 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       return anEntry.equals(result);
    }
 
+   /* Returns a string representation of the bag */
+   public String toString()
+   {
+      StringBuilder sb = new StringBuilder();
+      for (int i=0; i<numberOfEntries; ++i)
+         sb.append(bag[i].toString + ((i-1) != numberOfEntries) ? ", " : "");
+      return sb.toString();
+   }
+
    /* Locates a given entry within the array bag.
     * Returns the index of the entry, if located,
     * or -1 otherwise.
@@ -247,14 +258,16 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    // Returns true if the array is too big
    private boolean isTooBig()
    {
-      return (numberofEntries < bag.length/2 && bag.length > 20) ? true : false;
+      return (numberOfEntries < bag.length/2 && bag.length > 20) ? true : false;
    }
 
    // This method creates a new array that is three quarters the size of
    // the current array and then copies the objects in the bag into the new array.
    private void reduceArray()
    {
-      int newLength = ( 2 * bag.length ) / 3;
+      int newLength = ( 2 * bag.length ) / 3 + 1;
+      lmsg.info("Reducing bag from " + bag.length + " to " + newLength);
+      lmsg.info(this.toString());
       bag = Arrays.copyOf(bag, newLength);
    }
 }
