@@ -61,7 +61,6 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
 
       bag[numberOfEntries] = newEntry;
       numberOfEntries++;
-
       return true;
    } 
 
