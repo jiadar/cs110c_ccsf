@@ -15,9 +15,9 @@ public class TestResizableArrayBag {
       ResizableArrayBag mybag1 = new ResizableArrayBag(contents);
       ResizableArrayBag mybag2 = new ResizeableArrayBag();
       ResizableArrayBag mybag2 = new ResizeableArrayBag(125);
-      assertEquals(mybag1.getCurrentSize(), 15)
-      assertEquals(mybag1.getCurrentSize(), 25)
-      assertEquals(mybag1.getCurrentSize(), 125)
+      assertEquals(mybag1.getCurrentSize(), 15);
+      assertEquals(mybag1.getCurrentSize(), 25);
+      assertEquals(mybag1.getCurrentSize(), 125);
    }
 
    @Test
