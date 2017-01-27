@@ -1,5 +1,6 @@
 package resizableArrayBag;
 
+import java.sql.Array;
 import java.util.Arrays;
 import java.util.logging.*;
 
@@ -145,6 +146,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    {
       checkInitialization();
       T result = removeEntry(numberOfEntries - 1);
+      if (isTooBig()) reduceArray();
       return result;
    } 
 
@@ -157,6 +159,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       checkInitialization();
       int index = getIndexOf(anEntry);
       T result = removeEntry(index);
+      if (isTooBig()) reduceArray();
       return anEntry.equals(result);
    }
 
@@ -203,6 +206,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
          bag[lastIndex] = null;             // Remove reference to last entry
          numberOfEntries--;
       } 
+      if (isTooBig()) reduceArray();
 
       return result;
    } 
@@ -237,5 +241,21 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
          throw new SecurityException ("Uninitialized object used " +
                                       "to call an ArrayBag method.");
    } 
+
+   // This method returns true if the number of entries in the bag is les than half
+   // the size of the array and the size of the array is greater than 20.
+   // Returns true if the array is too big
+   private boolean isTooBig()
+   {
+      return (numberofEntries < bag.length/2 && bag.length > 20) ? true : false;
+   }
+
+   // This method creates a new array that is three quarters the size of
+   // the current array and then copies the objects in the bag into the new array.
+   private void reduceArray()
+   {
+      int newLength = ( 2 * bag.length ) / 3;
+      bag = Arrays.copyOf(bag, newLength);
+   }
 }
 

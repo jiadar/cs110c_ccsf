@@ -10,46 +10,6 @@ public class TestResizableArrayBag {
    private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
    @Test
-   public void testCurrentSizeWithAdd()
-   {
-      int i;
-      ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>(25);
-      assertEquals(mybag.getCurrentSize(), 0);
-      for(i = 1; i < ThreadLocalRandom.current().nextInt(10, 100); ++i)
-      {
-         mybag.add(i);
-         assertEquals(mybag.getCurrentSize(), i);
-      }
-   }
-
-   @Test
-
-   public void testVarious()
-   {
-      int i, j;
-      ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
-      for(i = 1; i < 20; ++i)
-      {
-         mybag.add(i);
-         for(j = 1; j <= i; ++j)
-         {
-            assertEquals(mybag.contains(i), true);
-            assertEquals(mybag.contains(i+1), false);
-         }
-      }
-      assertEquals(mybag.getCurrentSize(), 19);
-      mybag.remove(17);
-      assertEquals(mybag.contains(17), false);
-      mybag.add(17);
-      mybag.add(17);
-      assertEquals(mybag.contains(17), true);
-      mybag.remove(17);
-      assertEquals(mybag.contains(17), true);
-      mybag.remove(17);
-      assertEquals(mybag.contains(17), false);
-   }
-
-   @Test
    public void testAdd()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
@@ -99,29 +59,56 @@ public class TestResizableArrayBag {
    }
 
    @Test
-   public void testIndex()
+   public void testCurrentSizeWithAdd()
    {
+      int i;
+      ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>(25);
+      assertEquals(mybag.getCurrentSize(), 0);
+      for(i = 1; i < ThreadLocalRandom.current().nextInt(10, 100); ++i)
+      {
+         mybag.add(i);
+         assertEquals(mybag.getCurrentSize(), i);
+      }
+   }
+
+   @Test
+   public void testVarious()
+   {
+      int i, j;
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
-      mybag.add(7);
+      for(i = 1; i < 20; ++i)
+      {
+         mybag.add(i);
+         for(j = 1; j <= i; ++j)
+         {
+            assertEquals(mybag.contains(i), true);
+            assertEquals(mybag.contains(i+1), false);
+         }
+      }
+      assertEquals(mybag.getCurrentSize(), 19);
+      mybag.remove(17);
+      assertEquals(mybag.contains(17), false);
       mybag.add(17);
-      mybag.add(123);
-      assertEquals(mybag.getIndexOf(123), 2);
-      assertEquals(mybag.getIndexOf(17), 1);
+      mybag.add(17);
+      assertEquals(mybag.contains(17), true);
+      mybag.remove(17);
+      assertEquals(mybag.contains(17), true);
+      mybag.remove(17);
+      assertEquals(mybag.contains(17), false);
    }
 
    @Test
-   public void testFull()
-   {
-      ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>(1);
-      assertEquals(mybag.isArrayFull(), false);
-      mybag.add(1);
-      assertEquals(mybag.isArrayFull(), true);
-   }
-
-
-   @Test
-   public void testStub()
-   {
-      assertEquals(1,1);
+   public void testReduce() {
+      int i;
+      ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
+      for(i = 1; i < 100; ++i)
+      {
+         mybag.add(i);
+      }
+      for(i = 1; i < 100; ++i)
+      {
+         mybag.remove(i);
+      }
+      
    }
 }
