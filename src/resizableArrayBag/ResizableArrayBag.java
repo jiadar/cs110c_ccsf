@@ -1,6 +1,8 @@
 package resizableArrayBag;
 
 import java.util.Arrays;
+import java.util.logging.*;
+
 /**
  * A class that implements a bag of objects by using an array.
  * The bag is never full.
@@ -10,6 +12,7 @@ import java.util.Arrays;
  
 public final class ResizableArrayBag<T> implements BagInterface<T>
 {
+   private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
    private T[] bag; 
    private int numberOfEntries;
    private boolean initialized = false;

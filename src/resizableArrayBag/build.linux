@@ -46,7 +46,7 @@ fi
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
-#if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
+if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
     pushd $SRCDIR >/dev/null 2>&1
     git add -u 
     git commit -m "Auto commit"
@@ -64,7 +64,7 @@ fi
     ls -l tgz/$PKG-$VS.tgz
 #   find tgz/* -mtime +3 -exec rm {} \;
     popd >/dev/null 2>&1
-#fi
+fi
 
 
 

@@ -14,7 +14,6 @@ public class MyFraction implements Fraction {
 
    // Use this to get some logging as necessary in the unit test output
    private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
    // Prof. said to use double instead of int during class
    private double num;
    private double dem;
