@@ -8,7 +8,7 @@ public class TestResizableArrayBag {
    @Test
    public void testCurrentSize
    {
-      int[] contents = new int[15]
+      int[] contents = new int[15];
          for(i=0; i<15; i++) {
             contents[i]=i;
          }
