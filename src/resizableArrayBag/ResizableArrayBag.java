@@ -170,7 +170,10 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    {
       StringBuilder sb = new StringBuilder();
       for (int i=0; i<numberOfEntries; ++i)
-         sb.append(bag[i].toString + ((i-1) != numberOfEntries) ? ", " : "");
+      {
+         sb.append(bag[i]);
+         sb.append(((i-1) != numberOfEntries) ? ", " : "");
+      }
       return sb.toString();
    }
 
@@ -266,8 +269,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    private void reduceArray()
    {
       int newLength = ( 2 * bag.length ) / 3 + 1;
-      lmsg.info("Reducing bag from " + bag.length + " to " + newLength);
-      lmsg.info(this.toString());
+      lmsg.fine("Reducing bag from " + bag.length + " to " + newLength);
       bag = Arrays.copyOf(bag, newLength);
    }
 }

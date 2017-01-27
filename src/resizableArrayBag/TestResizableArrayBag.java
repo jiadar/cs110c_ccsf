@@ -99,15 +99,18 @@ public class TestResizableArrayBag {
 
    @Test
    public void testReduce() {
-      int i;
+      int i,j;
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
+
       for(i = 1; i < 100; ++i)
-      {
          mybag.add(i);
-      }
-      for(i = 1; i < 100; ++i)
+
+      for(i = 100; i > 1; --i)
       {
          mybag.remove(i);
+         assertEquals(mybag.contains(i), false);
+         for (j = 1; j < i; ++j) 
+            assertEquals(mybag.contains(j), true); 
       }
       
    }
