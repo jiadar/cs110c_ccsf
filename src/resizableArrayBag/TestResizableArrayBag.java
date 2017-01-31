@@ -24,7 +24,16 @@ public class TestResizableArrayBag {
       StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
       StackTraceElement e = stacktrace[3];
       String methodName = e.getMethodName();
-      lmsg.info(e.getMethodName() + ": " + value1.equals(value2) ? "PASS" : "FAIL");
+      String result;
+      if (value1 == value2)
+      {
+         result="PASS";
+      }
+      else
+      {
+         result="FAIL";
+      }
+      lmsg.info(e.getMethodName() + ": " + value1 + " == " + value2 + ": " + result);
    }
 
 //   @Test
