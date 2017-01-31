@@ -11,15 +11,15 @@ public class TestResizableArrayBag {
 
    public static void main(String[] args)
    {
-      TestResizableArrayBag.testAdd();
-      this.testRemove();
-      this.testEmpty();
-      this.testFrequency();
-      this.testVarious();
-      this.testReduce();
+      testAdd();
+      testRemove();
+      testEmpty();
+      testFrequency();
+      testVarious();
+      testReduce();
    }
 
-   public void assertEquals(Object value1, Object value2)
+   public static void assertEquals(Object value1, Object value2)
    {
       StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
       StackTraceElement e = stacktrace[2];
@@ -28,7 +28,7 @@ public class TestResizableArrayBag {
    }
 
 //   @Test
-   public void testAdd()
+   public static void testAdd()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
       mybag.add(1);
@@ -36,7 +36,7 @@ public class TestResizableArrayBag {
    }
 
 //   @Test
-   public void testRemove()
+   public static void testRemove()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
       mybag.add(1);
@@ -46,7 +46,7 @@ public class TestResizableArrayBag {
    }
 
 //   @Test
-   public void testEmpty()
+   public static void testEmpty()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
       assertEquals(mybag.isEmpty(), true);
@@ -55,7 +55,7 @@ public class TestResizableArrayBag {
    }
 
 //   @Test
-   public void testFrequency()
+   public static void testFrequency()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
       assertEquals(mybag.getFrequencyOf(7), 0);
@@ -66,7 +66,7 @@ public class TestResizableArrayBag {
    }
    
 //   @Test
-   public void testClear()
+   public static void testClear()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
       mybag.add(7);
@@ -77,7 +77,7 @@ public class TestResizableArrayBag {
    }
 
 //   @Test
-   public void testCurrentSizeWithAdd()
+   public static void testCurrentSizeWithAdd()
    {
       int i;
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>(25);
@@ -90,7 +90,7 @@ public class TestResizableArrayBag {
    }
 
 //   @Test
-   public void testVarious()
+   public static void testVarious()
    {
       int i, j;
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
@@ -116,7 +116,7 @@ public class TestResizableArrayBag {
    }
 
 //   @Test
-   public void testReduce() {
+   public static void testReduce() {
       int i,j;
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
 
