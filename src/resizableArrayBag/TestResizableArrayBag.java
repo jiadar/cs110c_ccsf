@@ -1,15 +1,29 @@
 package resizableArrayBag;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+//import static org.junit.Assert.*;
+//import org.junit.Test;
 import java.util.logging.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TestResizableArrayBag {
 
    private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+   public static void main(String[] args)
+   {
+      testAdd();
+      testRemove();
+      testEmpty();
+      testFrequency();
+      testVarious();
+      testReduce();
+   }
 
-   @Test
+   public assertEquals(Object value1, Object value2)
+   {
+      return value1==value2;
+   }
+
+//   @Test
    public void testAdd()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
@@ -17,7 +31,7 @@ public class TestResizableArrayBag {
       assertEquals(mybag.contains(1), true);
    }
 
-   @Test
+//   @Test
    public void testRemove()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
@@ -27,7 +41,7 @@ public class TestResizableArrayBag {
       assertEquals(mybag.contains(1), false);
    }
 
-   @Test
+//   @Test
    public void testEmpty()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
@@ -36,7 +50,7 @@ public class TestResizableArrayBag {
       assertEquals(mybag.isEmpty(), false);
    }
 
-   @Test
+//   @Test
    public void testFrequency()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
@@ -47,7 +61,7 @@ public class TestResizableArrayBag {
       assertEquals(mybag.getFrequencyOf(7), 2);
    }
    
-   @Test
+//   @Test
    public void testClear()
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
@@ -58,7 +72,7 @@ public class TestResizableArrayBag {
       assertEquals(mybag.getCurrentSize(), 0);
    }
 
-   @Test
+//   @Test
    public void testCurrentSizeWithAdd()
    {
       int i;
@@ -71,7 +85,7 @@ public class TestResizableArrayBag {
       }
    }
 
-   @Test
+//   @Test
    public void testVarious()
    {
       int i, j;
@@ -97,7 +111,7 @@ public class TestResizableArrayBag {
       assertEquals(mybag.contains(17), false);
    }
 
-   @Test
+//   @Test
    public void testReduce() {
       int i,j;
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
@@ -115,3 +129,4 @@ public class TestResizableArrayBag {
       
    }
 }
+
