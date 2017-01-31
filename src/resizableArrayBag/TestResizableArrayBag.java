@@ -29,7 +29,7 @@ public class TestResizableArrayBag {
          result="PASS";
       else
          result="FAIL";
-      lmsg.info(e.getMethodName() + ": " + value1 + " == " + value2 + ": " + result);
+      System.out.println(e.getMethodName() + ": " + value1 + " == " + value2 + ": " + result);
    }
 
 //   @Test
