@@ -18,6 +18,11 @@ public class TestMyFraction {
       testGetSet();
    }
       
+   public static void assertEquals(Object value1, Object value2, double d)
+   {
+      assertEquals(value1,value2);
+   }
+   
    public static void assertEquals(Object value1, Object value2)
    {
       StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
