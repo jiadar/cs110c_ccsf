@@ -1,10 +1,36 @@
-import static org.junit.Assert.*;
-import org.junit.Test;
+//import static org.junit.Assert.*;
+//import org.junit.Test;
 
 public class TestMyFraction {
 
    private static double DELTA=0.00000001;
-    
+
+   public static void main(String[] args)
+   {
+      testToString();
+      testAdd();
+      testSubtract();
+      testMultiply();
+      testDivide();
+      testReciprocal();
+      testSimplify();
+      testEquals();
+      testGetSet();
+   }
+      
+   public static void assertEquals(Object value1, Object value2)
+   {
+      StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+      StackTraceElement e = stacktrace[2];
+      String methodName = e.getMethodName();
+      String result;
+      if (value1 == value2)
+         result="PASS";
+      else
+         result="FAIL";
+      System.out.println(e.getMethodName() + ": " + value1 + " == " + value2 + ": " + result);
+   }
+   
    @Test 
    public void testToString()
    { 
