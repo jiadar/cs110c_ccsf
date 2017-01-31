@@ -32,7 +32,7 @@ public class TestMyFraction {
    }
    
    //@Test 
-   public void testToString()
+   public static void testToString()
    { 
       MyFraction f = new MyFraction(4,12);
       assertEquals(f.toString(),"4.0/12.0");
@@ -41,7 +41,7 @@ public class TestMyFraction {
    }
 
    //@Test
-   public void testAdd()
+   public static void testAdd()
    {
       MyFraction f1 = new MyFraction(9.0,17.0);
       MyFraction f2 = new MyFraction(2.0,5.0);
@@ -52,7 +52,7 @@ public class TestMyFraction {
    }
 
    //@Test
-   public void testSubtract()
+   public static void testSubtract()
    {
       MyFraction f1 = new MyFraction(9.0,17.0);
       MyFraction f2 = new MyFraction(2.0,5.0);
@@ -63,7 +63,7 @@ public class TestMyFraction {
    }
 
    //@Test
-   public void testMultiply()
+   public static void testMultiply()
    {
       MyFraction f1 = new MyFraction(9.0,17.0);
       MyFraction f2 = new MyFraction(2.0,5.0);
@@ -74,7 +74,7 @@ public class TestMyFraction {
    }
 
    //@Test
-   public void testDivide()
+   public static void testDivide()
    {
       MyFraction f1 = new MyFraction(9.0,17.0);
       MyFraction f2 = new MyFraction(2.0,5.0);
@@ -85,7 +85,7 @@ public class TestMyFraction {
    }
 
    //@Test
-   public void testReciprocal()
+   public static void testReciprocal()
    {
       MyFraction f1 = new MyFraction(9.0,17.0);
       MyFraction f2 = new MyFraction(2.0,5.0);
@@ -94,7 +94,7 @@ public class TestMyFraction {
    }
 
    //@Test
-   public void testEquals()
+   public static void testEquals()
    {
       MyFraction f1 = new MyFraction(9.0,17.0);
       MyFraction f2 = new MyFraction(5.0,5.0);
@@ -111,7 +111,7 @@ public class TestMyFraction {
    }
 
    //@Test
-   public void testSimplify()
+   public static void testSimplify()
    {
       MyFraction f1 = new MyFraction(9.0,27.0);
       MyFraction f2 = new MyFraction(-5.0,-15.0);
@@ -125,7 +125,7 @@ public class TestMyFraction {
    }
 
    //@Test
-   public void testGetSet()
+   public static void testGetSet()
    {
       MyFraction f1 = new MyFraction(1,1);
       f1.setNum(4);
