@@ -18,9 +18,12 @@ public class TestResizableArrayBag {
       testReduce();
    }
 
-   public assertEquals(Object value1, Object value2)
+   public void assertEquals(Object value1, Object value2)
    {
-      return value1==value2;
+      StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+      StackTraceElement e = stacktrace[2];
+      String methodName = e.getMethodName();
+      lmsg.info(e.getMethodName(),": ",value1==value2 ? "PASS" : "FAIL");
    }
 
 //   @Test
