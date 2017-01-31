@@ -29,7 +29,7 @@ public class TestMyFraction {
       StackTraceElement e = stacktrace[2];
       String methodName = e.getMethodName();
       String result;
-      if (value1value2)
+      if (value1.compareTo(value2)==0)
          result="PASS";
       else
          result="FAIL";
