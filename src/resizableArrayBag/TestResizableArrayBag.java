@@ -22,7 +22,7 @@ public class TestResizableArrayBag {
    {
       ResizableArrayBag<Integer> mybag = new ResizableArrayBag<Integer>();
       mybag.add(1);
-      assertEquals(mybag.contains(1), false);
+      assertEquals(mybag.contains(1), true);
       mybag.remove(1);
       assertEquals(mybag.contains(1), false);
    }
