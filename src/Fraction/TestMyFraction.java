@@ -18,18 +18,18 @@ public class TestMyFraction {
       testGetSet();
    }
       
-   public static void assertEquals(Object value1, Object value2, double d)
+   public static void assertEquals(Comparable value1, Comparable value2, double d)
    {
       assertEquals(value1,value2);
    }
    
-   public static void assertEquals(Object value1, Object value2)
+   public static void assertEquals(Comparable value1, Comparable value2)
    {
       StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
       StackTraceElement e = stacktrace[2];
       String methodName = e.getMethodName();
       String result;
-      if (value1.toString() == value2.toString())
+      if (value1value2)
          result="PASS";
       else
          result="FAIL";
