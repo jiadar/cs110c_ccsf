@@ -11,7 +11,7 @@ public class TestResizableArrayBag {
 
    public static void main(String[] args)
    {
-      this.testAdd();
+      TestResizableArrayBag.testAdd();
       this.testRemove();
       this.testEmpty();
       this.testFrequency();
