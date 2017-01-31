@@ -8,14 +8,15 @@ import java.util.concurrent.ThreadLocalRandom;
 public class TestResizableArrayBag {
 
    private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
    public static void main(String[] args)
    {
-      testAdd();
-      testRemove();
-      testEmpty();
-      testFrequency();
-      testVarious();
-      testReduce();
+      this.testAdd();
+      this.testRemove();
+      this.testEmpty();
+      this.testFrequency();
+      this.testVarious();
+      this.testReduce();
    }
 
    public void assertEquals(Object value1, Object value2)
@@ -23,7 +24,7 @@ public class TestResizableArrayBag {
       StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
       StackTraceElement e = stacktrace[2];
       String methodName = e.getMethodName();
-      lmsg.info(e.getMethodName(),": ",value1==value2 ? "PASS" : "FAIL");
+      lmsg.info(e.getMethodName() + ": " + value1==value2 ? "PASS" : "FAIL");
    }
 
 //   @Test
