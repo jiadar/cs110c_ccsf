@@ -169,6 +169,9 @@ public class LinkedBag<T> implements BagInterface<T>
       HashMap<T,Integer> myMap = new HashMap<T,Integer>();
       HashMap<T,Integer> otherMap = new HashMap<T,Integer>();
 
+      // lmsg.info("mybag: " + this.toString());
+      // lmsg.info("otherbag: " + other.toString());
+
       // Compute my map. This is easier because we have access to
       // the underlying list data structure
       
@@ -184,23 +187,24 @@ public class LinkedBag<T> implements BagInterface<T>
       // build the hash table keys then use get frequency to complete
       // the hash table
 
-      BagInterface<T> temp;
+      LinkedBag<T> temp = new LinkedBag<T>();
       T key = other.remove();
       while (key != null)
       {
          if (otherMap.containsKey(key))
             otherMap.put(key, otherMap.get(key) + 1);
          else 
-            otherMap.put(key, other.getFrequencyOf(key));
-         lmsg.info("Removed: " + key);
+            otherMap.put(key, 1);
+         //lmsg.info("Removed: " + key);
          temp.add(key);
          key = other.remove();
       }
 
+      other = temp;
       
       lmsg.info("mymap: " + myMap.toString());
       lmsg.info("othermap: " + otherMap.toString());
-      
+      lmsg.info("----------");
       return myMap.equals(otherMap);
    }
 }
