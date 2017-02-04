@@ -161,24 +161,27 @@ public class TestLinkedBag {
       assertEquals(mybag1.equals(mybag2), true);
    }
 
-      // mybag1.add(1);
-      // mybag1.add(1);
-      // mybag1.add(1);
-      // mybag1.add(2);
-      // mybag1.add(3);
-      // mybag1.add(1);
+   @Test
+   public void testBagEquals2()
+   {
+      mybag1.add(1);
+      mybag1.add(1);
+      mybag1.add(1);
+      mybag1.add(2);
+      mybag1.add(3);
+      mybag1.add(1);
 
-      // mybag2.add(3);
-      // mybag2.add(1);
-      // mybag2.add(1);
-      // mybag2.add(2);
-      // mybag2.add(1);
-      // assertEquals(mybag1.equals(mybag2), false);
+      mybag2.add(3);
+      mybag2.add(1);
+      mybag2.add(1);
+      mybag2.add(2);
+      mybag2.add(1);
+      assertEquals(mybag1.equals(mybag2), false);
 
-      // mybag1.remove(1);
-      // assertEquals(mybag1.equals(mybag2), true);
+      mybag1.remove(1);
+      assertEquals(mybag1.equals(mybag2), true);
    
-
+   }
    // public void main(String[] args)
    // {
    //    testAdd();
