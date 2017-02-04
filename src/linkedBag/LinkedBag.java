@@ -11,8 +11,7 @@ package linkedBag;
 import java.util.logging.*;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class LinkedBag<T> implements BagInterface<T>
 {
@@ -187,7 +186,6 @@ public class LinkedBag<T> implements BagInterface<T>
       // build the hash table keys then use get frequency to complete
       // the hash table
 
-      LinkedBag<T> temp = new LinkedBag<T>();
       T key = other.remove();
       while (key != null)
       {
@@ -195,13 +193,15 @@ public class LinkedBag<T> implements BagInterface<T>
             otherMap.put(key, otherMap.get(key) + 1);
          else 
             otherMap.put(key, 1);
-         //lmsg.info("Removed: " + key);
-         temp.add(key);
          key = other.remove();
       }
 
-      other = temp;
-      
+      // build back other from the hashmap 
+
+      // ....  put code here
+
+      // ... 
+
       lmsg.info("mymap: " + myMap.toString());
       lmsg.info("othermap: " + otherMap.toString());
       lmsg.info("----------");
