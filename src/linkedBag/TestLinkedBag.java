@@ -164,6 +164,8 @@ public class TestLinkedBag {
    @Test
    public void testBagEquals2()
    {
+      LinkedBag<Integer> mybag1 = new LinkedBag<Integer>();
+      LinkedBag<Integer> mybag2 = new LinkedBag<Integer>();
       mybag1.add(1);
       mybag1.add(1);
       mybag1.add(1);
@@ -192,20 +194,19 @@ public class TestLinkedBag {
    //    testReduce();
    // }
 
-   // public void assertEquals(Object value1, Object value2)
-   // {
-   //    StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
-   //    StackTraceElement e = stacktrace[2];
-   //    String methodName = e.getMethodName();
-   //    String result;
-   //    if (value1 == value2)
-   //       result="PASS";
-   //    else
-   //       result="FAIL";
-   //    System.out.println(e.getMethodName() + ": " + value1 + " == " + value2 + ": " + result);
-   // }
+   public void assertEqualsSEDMe(Object value1, Object value2)
+   {
+      StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+      StackTraceElement e = stacktrace[2];
+      String methodName = e.getMethodName();
+      String result;
+      if (value1 == value2)
+         result="PASS";
+      else
+         result="FAIL";
+      System.out.println(e.getMethodName() + ": " + value1 + " == " + value2 + ": " + result);
+   }
 
 
-}
-
+} //end
 

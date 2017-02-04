@@ -45,6 +45,18 @@ if [ "$JAVADOC" = true ] ; then
     popd >/dev/null 2>&1
 fi
 
+# sed and awk the test file into a standalone test
+
+echo "public static void main(String[] args) {" > main.tmp
+cat TestLinkedBag.java | grep "public void" | grep \(\) |\
+    awk '{print $3 ";"}' >> main.tmp
+echo "}}" >> main.tmp
+cat $TESTER | sed -e '/junit/d' | sed -e '/@Test/d' |\
+    sed -e 's/public\ void/public\ static\ void/g' |\
+    sed -e 's/SEDMe//g' | sed -e '/\}\ \ /\/end/d' > standalone-$TESTER
+cat main.tmp >> standalone-$TESTER                            
+                          
+
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
 if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
