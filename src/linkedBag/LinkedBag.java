@@ -179,14 +179,13 @@ public class LinkedBag<T> implements BagInterface<T>
       // build the hash table keys then use get frequency to complete
       // the hash table
 
-      LinkedBag<T> tempBag = other;
-      T key;
-      while (tempBag != null)
+      BagInterface<T> tempBag = other;
+      T key = tempBag.remove();
+      while (key != null)
       {
-         key = tempBag.remove();
-         myMap.put(key, getFrequencyOf(key)); 
+         otherMap.put(key, getFrequencyOf(key));
+         lmsg.info("Removed: " + key);
       }
-
       return false;
    }
 }
