@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# User Configurable 
+DEVHOME=/Users/ross/work
+PROJ="cs110c_ccsf"
+PKG="linkedBag"
+VERBOSE=false
+JAVADOC=false
+CLASSES="BagInterface.java LinkedBag.java TestLinkedBag.java"
+TESTER="TestLinkedBag"
+
+# Should not have to configure anything below 
+LIBDIR=$DEVHOME/$PROJ/lib
+BINDIR=$DEVHOME/$PROJ/bin/$PKG
+SRCDIR=$DEVHOME/$PROJ/src/$PKG
+DOCDIR=$DEVHOME/doc/$PKG
+
+if [ ! -d $LIBDIR ] ; then mkdir -p $LIBDIR ; fi
+if [ ! -d $BINDIR ] ; then mkdir -p $BINDIR ; fi
+if [ ! -d $DOCDIR ] ; then mkdir -p $DOCDIR ; fi
+if [ ! -f $SRCDIR/.timestamp ] ; then touch $SRCDIR/.timestamp ; fi
+
+for CLASS in $CLASSES
+do
+    if [ "$VERBOSE" = true ] ; then
+        echo "javac -d $BINDIR $SRCDIR/$CLASS"
+    fi
+    javac -cp .:$BINDIR:$LIBDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar -d $BINDIR $SRCDIR/$CLASS
+done
+
+if [ "$VERBOSE" = true ] ; then
+    echo "java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar org.junit.runner.JUnitCore $TESTER"
+    echo
+fi
+
+java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar org.junit.runner.JUnitCore $PKG.$TESTER
+#java -cp .:$BINDIR $PKG.$TESTER
+
+if [ "$JAVADOC" = true ] ; then
+    pushd $SRCDIR >/dev/null 2>&1
+    if [ "$VERBOSE" == true ] ; then
+        echo "javadoc -d $DEVHOME/../../doc/$PKG $CLASSES"
+    fi  
+    javadoc -d $DOCDIR $CLASSES
+    popd >/dev/null 2>&1
+fi
+
+# if it's been more than 10 minutes, commit the changes and make a tar ball
+
+if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
+    pushd $SRCDIR >/dev/null 2>&1
+    git add -u 
+    git commit -m "Auto commit"
+    git push
+    touch .timestamp
+    popd >/dev/null 2>&1
+    echo
+    
+    # tgz the project for uploading
+    pushd $DEVHOME/$PROJ >/dev/null 2>&1
+    if [ ! -d $DEVHOME/$PROJ/tgz ] ; then mkdir $DEVHOME/$PROJ/tgz; fi 
+    VS=$(date +%y%m%d-%H%M%S)
+    tar czf tgz/$PKG-$VS.tgz doc/$PKG src/$PKG bin/$PKG
+    COPYFILE_DISABLE=1 tar czf tgz/$PKG-$VS.tgz  src/$PKG 
+    ls -l tgz/$PKG-$VS.tgz
+#    find tgz/* -mtime +3 -exec rm {} \;
+    popd >/dev/null 2>&1
+fi
+
+
+
+    
+
+						    
+
+
