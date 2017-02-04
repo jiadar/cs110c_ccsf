@@ -1,6 +1,15 @@
+/* ===========================================================================
+   $File: LinkedBag.java $
+   $Date: Feb 3, 2017 $
+   $Revision: 1.0 $
+   $Creator: Ross Capdeville $
+   $Notice: (C) Copyright 2017 by Ross Capdeville. All Rights Reserved. $
+   =========================================================================== */
+
 package linkedBag;
 
 import java.util.logging.*;
+import java.util.HashMap;
 
 public class LinkedBag<T> implements BagInterface<T>
 {
@@ -154,7 +163,30 @@ public class LinkedBag<T> implements BagInterface<T>
 
    public boolean equals(BagInterface<T> other)
    {
+      HashMap<T,Integer> myMap = new HashMap<T,Integer>();
+      HashMap<T,Integer> otherMap = new HashMap<T,Integer>();
+
+      // Compute my map
+      Node cur = head;
+      while (cur != null)
+      {
+         myMap.put(cur.data, this.getFrequencyOf(cur.data));
+         cur = cur.next;
+      }
+
+      // For the other map, ready access to the data elements is not
+      // available. So we will copy the bag, remove each element to
+      // build the hash table keys then use get frequency to complete
+      // the hash table
+
+      LinkedBag<T> tempBag = other;
+      T key;
+      while (tempBag != null)
+      {
+         key = tempBag.remove();
+         myMap.put(key, getFrequencyOf(key)); 
+      }
+
       return false;
    }
-
 }

@@ -1,3 +1,11 @@
+/* ===========================================================================
+   $File: Test LinkedBag.java $
+   $Date: Feb 3, 2017 $
+   $Revision: 1.0 $
+   $Creator: Ross Capdeville $
+   $Notice: (C) Copyright 2017 by Ross Capdeville. All Rights Reserved. $
+   =========================================================================== */
+
 package linkedBag;
 import static org.junit.Assert.*;
 import org.junit.Test;
