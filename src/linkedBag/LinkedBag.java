@@ -198,6 +198,13 @@ public class LinkedBag<T> implements BagInterface<T>
 
       // build back other from the hashmap 
 
+      for (otherMap.Entry<T, Integer> entry : map.entrySet()) 
+         for(int i = 0; i < entry.getValue(); ++i) 
+            other.add(entry.getValue());
+         
+}
+
+      
       // ....  put code here
 
       // ... 
