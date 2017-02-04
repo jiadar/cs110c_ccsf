@@ -10,6 +10,9 @@ package linkedBag;
 
 import java.util.logging.*;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
+import java.util.Set;
 
 public class LinkedBag<T> implements BagInterface<T>
 {
@@ -166,7 +169,9 @@ public class LinkedBag<T> implements BagInterface<T>
       HashMap<T,Integer> myMap = new HashMap<T,Integer>();
       HashMap<T,Integer> otherMap = new HashMap<T,Integer>();
 
-      // Compute my map
+      // Compute my map. This is easier because we have access to
+      // the underlying list data structure
+      
       Node cur = head;
       while (cur != null)
       {
@@ -187,6 +192,11 @@ public class LinkedBag<T> implements BagInterface<T>
          lmsg.info("Removed: " + key);
          key = tempBag.remove();
       }
-      return false;
+
+      
+      lmsg.info("mymap: " + myMap.toString());
+      lmsg.info("othermap: " + otherMap.toString());
+      
+      return myMap.equals(otherMap);
    }
 }

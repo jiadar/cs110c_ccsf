@@ -146,9 +146,9 @@ public class TestLinkedBag {
       mybag1.add(1);
       mybag1.add(2);
       mybag1.add(3);
+      mybag2.add(3);
       mybag2.add(1);
       mybag2.add(2);
-      mybag2.add(3);
       assertEquals(mybag1.equals(mybag2), true);
    }
 
