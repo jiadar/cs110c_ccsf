@@ -168,9 +168,6 @@ public class LinkedBag<T> implements BagInterface<T>
       HashMap<T,Integer> myMap = new HashMap<T,Integer>();
       HashMap<T,Integer> otherMap = new HashMap<T,Integer>();
 
-      // lmsg.info("mybag: " + this.toString());
-      // lmsg.info("otherbag: " + other.toString());
-
       // Compute my map. This is easier because we have access to
       // the underlying list data structure
       
@@ -182,36 +179,24 @@ public class LinkedBag<T> implements BagInterface<T>
       }
 
       // For the other map, ready access to the data elements is not
-      // available. So we will copy the bag, remove each element to
-      // build the hash table keys then use get frequency to complete
-      // the hash table
+      // available. So we will remove each element from the bag and
+      // insert it into a hash map. Note the other bag will be empty
+      // after this loop.
 
       T key = other.remove();
       while (key != null)
       {
-         if (otherMap.containsKey(key))
-            otherMap.put(key, otherMap.get(key) + 1);
-         else 
-            otherMap.put(key, 1);
+         otherMap.put(otherMap.containsKey(key) ? otherMap.get(key) + 1 : 1); 
          key = other.remove();
       }
 
-      // build back other from the hashmap 
+      // Recreate other from the hashmap 
 
-      for (otherMap.Entry<T, Integer> entry : map.entrySet()) 
+      for (HashMap.Entry<T, Integer> entry : otherMap.entrySet()) {
          for(int i = 0; i < entry.getValue(); ++i) 
-            other.add(entry.getValue());
-         
-}
+            other.add(entry.getKey());  
+      }
 
-      
-      // ....  put code here
-
-      // ... 
-
-      lmsg.info("mymap: " + myMap.toString());
-      lmsg.info("othermap: " + otherMap.toString());
-      lmsg.info("----------");
       return myMap.equals(otherMap);
    }
 }
