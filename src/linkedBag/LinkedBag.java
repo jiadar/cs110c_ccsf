@@ -185,6 +185,7 @@ public class LinkedBag<T> implements BagInterface<T>
       {
          otherMap.put(key, getFrequencyOf(key));
          lmsg.info("Removed: " + key);
+         key = tempBag.remove();
       }
       return false;
    }
