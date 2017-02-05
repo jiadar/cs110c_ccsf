@@ -8,6 +8,7 @@ VERBOSE=false
 JAVADOC=false
 CLASSES="BagInterface.java LinkedBag.java TestLinkedBag.java"
 TESTER="TestLinkedBag"
+STANDALONE_TESTER="TestLinkedBagStandalone"
 
 # Should not have to configure anything below 
 LIBDIR=$DEVHOME/$PROJ/lib
@@ -51,13 +52,13 @@ echo "public static void main(String[] args) {" > main.tmp
 cat TestLinkedBag.java | grep "public void" | grep \(\) |\
     awk '{print $3 ";"}' >> main.tmp
 echo "}}" >> main.tmp
-if [ -f $TESTER-Standalone.java ] ; then rm $TESTER-Standalone.java ; fi
-cat $TESTER.java | sed -e 's/TestLinkedBag {/TestLinkedBag-Standalone {/g' |\
+if [ -f $STANDALONE_TESTER.java ] ; then rm $STANDALONE_TESTER.java ; fi
+cat $TESTER.java | sed -e 's/TestLinkedBag {/TestLinkedBagStandalone {/g' |\
     sed -e '/junit/d' | sed -e '/@Test/d' |\
     sed -e 's/public\ void/public\ static\ void/g' |\
-    sed -e 's/SEDMe//g' | sed -e '/} \/\/end/d' >> $TESTER-Standalone.java
-cat main.tmp >> $TESTER-Standalone.java                            
-javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$TESTER-Standalone.java
+    sed -e 's/SEDMe//g' | sed -e '/} \/\/end/d' >> $STANDALONE_TESTER.java
+cat main.tmp >> $STANDALONE_TESTER.java                            
+javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$STANDALONE_TESTER.java
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
