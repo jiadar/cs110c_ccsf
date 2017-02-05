@@ -12,7 +12,7 @@ STANDALONE_TESTER="TestLinkedBagStandalone"
 
 # Should not have to configure anything below 
 LIBDIR=$DEVHOME/$PROJ/lib
-BINDIR=$DEVHOME/$PROJ/bin/$PKG
+BINDIR=$DEVHOME/$PROJ/bin
 SRCDIR=$DEVHOME/$PROJ/src/$PKG
 DOCDIR=$DEVHOME/doc/$PKG
 
@@ -47,7 +47,7 @@ if [ "$JAVADOC" = true ] ; then
 fi
 
 # sed and awk the test file into a standalone test
-
+pushd $SRCDIR >/dev/null 2>&1
 echo "public static void main(String[] args) {" > main.tmp
 cat TestLinkedBag.java | grep "public void" | grep \(\) |\
     awk '{print $3 ";"}' >> main.tmp
@@ -59,6 +59,8 @@ cat $TESTER.java | sed -e 's/TestLinkedBag {/TestLinkedBagStandalone {/g' |\
     sed -e 's/SEDMe//g' | sed -e '/} \/\/end/d' >> $STANDALONE_TESTER.java
 cat main.tmp >> $STANDALONE_TESTER.java                            
 javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$STANDALONE_TESTER.java
+rm main.tmp
+popd >/dev/null 2>&1
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 

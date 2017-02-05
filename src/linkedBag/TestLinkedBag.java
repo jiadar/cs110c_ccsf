@@ -111,16 +111,6 @@ public class TestLinkedBag {
    }
 
    @Test
-   public void testString()
-   {
-      LinkedBag<Integer> mybag = new LinkedBag<Integer>();
-      mybag.add(1);
-      mybag.add(2);
-      mybag.add(3);
-      assertEquals(mybag.toString(),"3 -> 2 -> 1 -> null");
-   }
-
-   @Test
    public void testHasDuplicates()
    {
       LinkedBag<Integer> mybag = new LinkedBag<Integer>();
@@ -184,15 +174,6 @@ public class TestLinkedBag {
       assertEquals(mybag1.equals(mybag2), true);
    
    }
-   // public void main(String[] args)
-   // {
-   //    testAdd();
-   //    testRemove();
-   //    testEmpty();
-   //    testFrequency();
-   //    testVarious();
-   //    testReduce();
-   // }
 
    public void assertEqualsSEDMe(Object value1, Object value2)
    {
