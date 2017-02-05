@@ -194,7 +194,7 @@ public class LinkedBag<T> implements BagInterface<T>
       return myMap.equals(otherMap);
    }
 
-   public void doubleElements()
+   public void double()
    {
       
    }
