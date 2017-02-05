@@ -48,6 +48,7 @@ popd >/dev/null 2>&1
 pushd $BINDIR >/dev/null 2>&1
 java $PKG.$STANDALONE_TESTER | grep -v PASS
 popd >/dev/null 2>&1
+echo
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
