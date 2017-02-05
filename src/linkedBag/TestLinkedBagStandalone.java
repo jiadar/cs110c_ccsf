@@ -12,9 +12,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class TestLinkedBagStandalone {
 
-   private static tests=0;
-   private static passes=0;
-   private static fails=0;
+   private static int tests=0;
+   private static int passes=0;
+   private static int fails=0;
    
    private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
