@@ -213,8 +213,9 @@ public class LinkedBag<T> implements BagInterface<T>
 
    // Utility Methods
    
-   private static void MapToBag(HashMap<T,Integer> freqMap, BagInterface<T> aBag)
+   private BagInterface<T> MapToBag(HashMap<T,Integer> freqMap)
    {
+      BagInterface<T> myBag = new BagInterface<T>();
       for (HashMap.Entry<T, Integer> entry : freqMap.entrySet()) {
          for(int i = 0; i < entry.getValue(); ++i) 
             aBag.add(entry.getKey());  
