@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class LinkedBag<T> implements BagInterface<T>
 {
-   private static final boolean DEBUG=true;
    private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
    private Node head = null;
@@ -51,11 +50,11 @@ public class LinkedBag<T> implements BagInterface<T>
       if (size == 0)
          return null;
 
-      @SuppressWarnings("unchecked") T tempBag = (T)new Object();
-      tempBag = head.data;
+      @SuppressWarnings("unchecked") T temp = (T)new Object();
+      temp = head.data;
       head=head.next;
       --size;
-      return tempBag;
+      return temp;
    }
 
    public boolean remove(T anEntry)
