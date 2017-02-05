@@ -186,7 +186,10 @@ public class LinkedBag<T> implements BagInterface<T>
 
       // Recreate other from the hashmap 
 
-      MapToBag(otherMap, other);
+      for (HashMap.Entry<T, Integer> entry : otherMap.entrySet()) {
+         for(int i = 0; i < entry.getValue(); ++i) 
+            other.add(entry.getKey());  
+      }      
 
       return myMap.equals(otherMap);
    }
@@ -208,19 +211,5 @@ public class LinkedBag<T> implements BagInterface<T>
          cur = cur.next;
       }      
    }
-
-
-
-   // Utility Methods
-   
-   private BagInterface<T> MapToBag(HashMap<T,Integer> freqMap)
-   {
-      BagInterface<T> myBag = new BagInterface<T>();
-      for (HashMap.Entry<T, Integer> entry : freqMap.entrySet()) {
-         for(int i = 0; i < entry.getValue(); ++i) 
-            aBag.add(entry.getKey());  
-      }      
-   }
-
 
 }
