@@ -55,5 +55,8 @@ public interface BagInterface<T>
    /** Determins if the bag has the same entries 
        @return true if the two bags have the same entries. Otherwise false */
    public boolean equals(BagInterface<T> other);
+
+   /** Doubles everything in the bag */
+   public void double();
    
 } // end BagInterface

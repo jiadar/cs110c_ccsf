@@ -168,14 +168,9 @@ public class LinkedBag<T> implements BagInterface<T>
       HashMap<T,Integer> otherMap = new HashMap<T,Integer>();
 
       // Compute my map. This is easier because we have access to
-      // the underlying list data structure
-      
-      Node cur = head;
-      while (cur != null)
-      {
-         myMap.put(cur.data, this.getFrequencyOf(cur.data));
-         cur = cur.next;
-      }
+      // the private getFrequencyMap method
+
+      myMap=this.getFrequencyMap();
 
       // For the other map, ready access to the data elements is not
       // available. So we will remove each element from the bag and
@@ -191,11 +186,40 @@ public class LinkedBag<T> implements BagInterface<T>
 
       // Recreate other from the hashmap 
 
-      for (HashMap.Entry<T, Integer> entry : otherMap.entrySet()) {
-         for(int i = 0; i < entry.getValue(); ++i) 
-            other.add(entry.getKey());  
-      }
+      MapToBag(otherMap, other);
 
       return myMap.equals(otherMap);
    }
+
+   public void double()
+   {
+      
+   }
+
+   // Private Methods
+   
+   private HashMap<T,Integer> getFrequencyMap()
+   {
+      HashMap<T,Integer> myMap = new HashMap<T,Integer>();
+      Node cur = head;
+      while (cur != null)
+      {
+         myMap.put(cur.data, this.getFrequencyOf(cur.data));
+         cur = cur.next;
+      }      
+   }
+
+
+
+   // Utility Methods
+   
+   private static void MapToBag(HashMap<T,Integer> freqMap, BagInterface<T> aBag)
+   {
+      for (HashMap.Entry<T, Integer> entry : freqMap.entrySet()) {
+         for(int i = 0; i < entry.getValue(); ++i) 
+            aBag.add(entry.getKey());  
+      }      
+   }
+
+
 }
