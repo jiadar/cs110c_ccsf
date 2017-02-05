@@ -175,13 +175,13 @@ public class TestLinkedBag {
    
    }
 
-   public void assertEqualsSEDMe(Object value1, Object value2)
+   public void assertEqualsSEDMe(Comparable value1, Comparable value2)
    {
       StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
       StackTraceElement e = stacktrace[2];
       String methodName = e.getMethodName();
       String result;
-      if (value1 == value2)
+      if (value1.equals(value2))
          result="PASS";
       else
          result="FAIL";
