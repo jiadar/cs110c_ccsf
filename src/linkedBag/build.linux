@@ -32,6 +32,9 @@ pushd $SRCDIR >/dev/null 2>&1
 echo "public static void main(String[] args) {" > main.tmp
 cat TestLinkedBag.java | grep "public void" | grep \(\) |\
     awk '{print $3 ";"}' >> main.tmp
+echo "System.out.println(\"Total Tests: \" + tests);" >> main.tmp
+echo "System.out.println(\"Tests Passed: \" + passes);" >> main.tmp
+echo "System.out.println(\"Tests Failed: \" + fails);" >> main.tmp
 echo "}}" >> main.tmp
 if [ -f $STANDALONE_TESTER.java ] ; then rm $STANDALONE_TESTER.java ; fi
 cat $TESTER.java | sed -e 's/TestLinkedBag {/TestLinkedBagStandalone {/g' |\

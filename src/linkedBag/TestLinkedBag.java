@@ -14,6 +14,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class TestLinkedBag {
 
+   private static tests=0;
+   private static passes=0;
+   private static fails=0;
+   
    private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
    @Test
@@ -177,15 +181,23 @@ public class TestLinkedBag {
 
    public void assertEqualsSEDMe(Comparable value1, Comparable value2)
    {
+      ++tests;
       StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
       StackTraceElement e = stacktrace[2];
       String methodName = e.getMethodName();
       String result;
       if (value1.equals(value2))
+      {
          result="PASS";
+         ++passes;
+      }
       else
+      {
          result="FAIL";
-      System.out.println(e.getMethodName() + ": " + value1 + " == " + value2 + ": " + result);
+         ++fails;
+      }
+      System.out.println("Test #" + tests + " " + e.getMethodName() + ": " + value1 +
+                         " == " + value2 + ": " + result);
    }
 
 

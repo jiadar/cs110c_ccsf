@@ -12,6 +12,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class TestLinkedBagStandalone {
 
+   private static tests=0;
+   private static passes=0;
+   private static fails=0;
+   
    private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
    public static void testTests()
@@ -164,15 +168,23 @@ public class TestLinkedBagStandalone {
 
    public static void assertEquals(Comparable value1, Comparable value2)
    {
+      ++tests;
       StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
       StackTraceElement e = stacktrace[2];
       String methodName = e.getMethodName();
       String result;
       if (value1.equals(value2))
+      {
          result="PASS";
+         ++passes;
+      }
       else
+      {
          result="FAIL";
-      System.out.println(e.getMethodName() + ": " + value1 + " == " + value2 + ": " + result);
+         ++fails;
+      }
+      System.out.println("Test #" + tests + " " + e.getMethodName() + ": " + value1 +
+                         " == " + value2 + ": " + result);
    }
 
 
@@ -189,4 +201,7 @@ testVarious();
 testHasDuplicates();
 testBagEquals1();
 testBagEquals2();
+System.out.println("Total Tests: " + tests);
+System.out.println("Tests Passed: " + passes);
+System.out.println("Tests Failed: " + fails);
 }}
