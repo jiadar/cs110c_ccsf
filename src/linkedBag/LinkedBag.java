@@ -209,7 +209,8 @@ public class LinkedBag<T> implements BagInterface<T>
       {
          myMap.put(cur.data, this.getFrequencyOf(cur.data));
          cur = cur.next;
-      }      
+      }
+      return myMap;
    }
 
 }
