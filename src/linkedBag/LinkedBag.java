@@ -185,7 +185,7 @@ public class LinkedBag<T> implements BagInterface<T>
       T key = other.remove();
       while (key != null)
       {
-         otherMap.put(key, otherMap.containsKey(key) ? ++otherMap.get(key) : 1); 
+         otherMap.put(key, otherMap.containsKey(key) ? otherMap.get(key) + 1 : 1); 
          key = other.remove();
       }
 
