@@ -42,8 +42,8 @@ cat main.tmp >> $STANDALONE_TESTER.java
 javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$STANDALONE_TESTER.java
 rm main.tmp
 popd >/dev/null 2>&1
-pushd $BINDIR/..  >/dev/null 2>&1
-java linkedBag.TestLinkedBagStandalone | grep -v PASS
+pushd $BINDIR >/dev/null 2>&1
+java $PKG.$STANDALONE_TESTER | grep -v PASS
 popd >/dev/null 2>&1
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
