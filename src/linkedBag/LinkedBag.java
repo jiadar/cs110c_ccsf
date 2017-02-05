@@ -194,13 +194,26 @@ public class LinkedBag<T> implements BagInterface<T>
       return myMap.equals(otherMap);
    }
 
-   public void double()
+   public void doubleElements()
    {
-      
+      // Get a hashmap of the current bag
+
+      HashMap<T,Integer> myMap = new HashMap<T,Integer>();
+      myMap = this.getFrequencyMap();
+
+      // Double the elements 
+
+      for (HashMap.Entry<T, Integer> entry : myMap.entrySet()) {
+         for(int i = 0; i < entry.getValue(); ++i) 
+            this.add(entry.getKey());  
+      }            
    }
 
    // Private Methods
-   
+
+
+   // Compute a Frequency Distribution Hashmap of the bag    
+
    private HashMap<T,Integer> getFrequencyMap()
    {
       HashMap<T,Integer> myMap = new HashMap<T,Integer>();

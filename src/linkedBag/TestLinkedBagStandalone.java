@@ -166,6 +166,16 @@ public class TestLinkedBagStandalone {
    
    }
 
+   public static void testDouble1()
+   {
+      LinkedBag<String> mybag = new LinkedBag<String>();
+      mybag.add("foo");
+      mybag.doubleElements();
+      assertEquals(mybag1.getFrequencyOf("foo"), 2);
+      mybag.doubleElements();
+      assertEquals(mybag1.getFrequencyOf("foo"), 4);
+   }
+   
    public static void assertEquals(Comparable value1, Comparable value2)
    {
       ++tests;
@@ -201,6 +211,7 @@ testVarious();
 testHasDuplicates();
 testBagEquals1();
 testBagEquals2();
+testDouble1();
 System.out.println("Total Tests: " + tests);
 System.out.println("Tests Passed: " + passes);
 System.out.println("Tests Failed: " + fails);

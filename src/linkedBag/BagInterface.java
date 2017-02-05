@@ -57,6 +57,6 @@ public interface BagInterface<T>
    public boolean equals(BagInterface<T> other);
 
    /** Doubles everything in the bag */
-   public void double();
+   public void doubleElements();
    
 } // end BagInterface
