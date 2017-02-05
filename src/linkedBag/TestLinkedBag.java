@@ -185,9 +185,9 @@ public class TestLinkedBag {
       LinkedBag<String> mybag = new LinkedBag<String>();
       mybag.add("foo");
       mybag.doubleElements();
-      assertEquals(mybag1.getFrequencyOf("foo"), 2);
+      assertEquals(mybag.getFrequencyOf("foo"), 2);
       mybag.doubleElements();
-      assertEquals(mybag1.getFrequencyOf("foo"), 4);
+      assertEquals(mybag.getFrequencyOf("foo"), 4);
    }
    
    public void assertEqualsSEDMe(Comparable value1, Comparable value2)
