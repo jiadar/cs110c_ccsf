@@ -58,7 +58,7 @@ fi
    
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
-#if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
+if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
     pushd $SRCDIR >/dev/null 2>&1
     git add -u 
     git commit -m "Auto commit"
@@ -74,7 +74,7 @@ fi
     COPYFILE_DISABLE=1 tar czf tgz/$PKG-$VS.tgz  src/$PKG bin/$PKG 
     ls -l tgz/$PKG-$VS.tgz
     popd >/dev/null 2>&1
-#fi
+fi
 
 
 

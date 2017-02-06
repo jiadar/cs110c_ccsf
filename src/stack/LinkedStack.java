@@ -55,17 +55,18 @@ public class LinkedStack<T> implements Stack<T> {
       size=0;
    }
 
-   // public void toString()
-   // {
-   //    StringBuilder sb = new StringBuilder();
-   //    cur=head;
-   //    while(cur != null)
-   //    {
-   //       sb.append(cur.data.toString());
-   //       cur = cur.next;
-   //    }
-   //    return sb.toString();
-   // }
+   public String toString()
+   {
+      StringBuilder sb = new StringBuilder();
+      Node cur=head;
+      while(cur != null)
+      {
+         sb.append(cur.data.toString());
+         sb.append((cur.next==null ? "" : ", "));
+         cur = cur.next;
+      }
+      return sb.toString();
+}
 
    public void remove(int n)
    {
