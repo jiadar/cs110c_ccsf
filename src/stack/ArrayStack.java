@@ -1,5 +1,6 @@
 package stack;
 import java.util.EmptyStackException;
+import java.util.Arrays;
 
 public class ArrayStack<T> implements Stack<T> {
 
@@ -9,11 +10,11 @@ public class ArrayStack<T> implements Stack<T> {
    private static final int DEFAULT_CAPACITY=25;
    private static final int MAX_CAPACITY=10000;
    
-   public ArraStack(int initialCapacity)
+   public ArrayStack(int initialCapacity)
    {
       checkCapacity(initialCapacity);
-      @SuppressWarnings("unchecked");
-      T[] tempData = (T[]new Object[initialCapacity]);
+      @SuppressWarnings("unchecked")
+         T[] tempData = (T[]) new Object[initialCapacity];
       data = tempData;
       size = 0;
       initialized = true;
@@ -27,7 +28,7 @@ public class ArrayStack<T> implements Stack<T> {
    private void doubleSize()
    {
       checkCapacity(size*2);
-      data = Arrays.copyOf(data, size*2)
+      data = Arrays.copyOf(data, size*2);
    }
 
    private void checkCapacity(int capacity)
@@ -39,7 +40,7 @@ public class ArrayStack<T> implements Stack<T> {
    public void push(T newEntry)
    {
       data[size]=newEntry;
-      if (size == max)
+      if (size == MAX_CAPACITY-1)
          this.doubleSize();
       ++size;
    }

@@ -51,7 +51,7 @@ public class TestStack {
       assertEquals(s.isEmpty(), true);
    }      
 
-   public void testLinkedStack() {
+   public void testArrayStack() {
       Stack<Integer> s = new ArrayStack<Integer>();
       Integer d;
       assertEquals(s.peek(), null);
@@ -96,4 +96,26 @@ public class TestStack {
       assertEquals(true, true);
    }
 
-}
+   public void assertEqualsSEDMe(Comparable value1, Comparable value2)
+   {
+      ++tests;
+      StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+      StackTraceElement e = stacktrace[2];
+      String methodName = e.getMethodName();
+      String result;
+      if (value1.equals(value2))
+      {
+         result="PASS";
+         ++passes;
+      }
+      else
+      {
+         result="FAIL";
+         ++fails;
+      }
+      System.out.println("Test #" + tests + " " + e.getMethodName() + ": " + value1 +
+                         " == " + value2 + ": " + result);
+   }
+
+   
+} //end

@@ -8,7 +8,7 @@ VERBOSE=false
 CLASSES="Stack.java LinkedStack.java ArrayStack.java TestStack.java"
 TESTER="TestStack"
 STANDALONE_TESTER="TestStackStandalone"
-MAKE_SA_TEST=0
+MAKE_SA_TEST=1
 
 # Should not have to configure anything below 
 LIBDIR=$DEVHOME/$PROJ/lib
@@ -48,10 +48,10 @@ cat $TESTER.java | sed -e 's/TestStack {/TestStackStandalone {/g' |\
     sed -e 's/SEDMe//g' | sed -e '/} \/\/end/d' >> $STANDALONE_TESTER.java
 cat main.tmp >> $STANDALONE_TESTER.java                            
 javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$STANDALONE_TESTER.java
-rm main.tmp
+main.tmp
 popd >/dev/null 2>&1
 pushd $BINDIR >/dev/null 2>&1
-#java $PKG.$STANDALONE_TESTER | grep -v PASS
+java $PKG.$STANDALONE_TESTER | grep -v PASS
 popd >/dev/null 2>&1
 echo
 fi
