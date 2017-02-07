@@ -26,9 +26,14 @@ public class ArrayStack<T> implements Stack<T> {
 
    private void doubleSize()
    {
-      max *= 2;
-      T[] temp[max]; 
-      temp = data;
+      checkCapacity(size*2);
+      data = Arrays.copyOf(data, size*2)
+   }
+
+   private void checkCapacity(int capacity)
+   {
+      if (capacity > MAX_CAPACITY)
+         throw new IllegalStateException("Attempt to exceed maximum allowed capacity");
    }
    
    public void push(T newEntry)
@@ -41,62 +46,50 @@ public class ArrayStack<T> implements Stack<T> {
    
    public T pop()
    {
-      if (head==null)
+      if (size==0)
          return null;
-      
-      T data = head.data;
-      head=head.next;
+
       --size;
-      return data;
+      return data[size];
    }
 
    public T peek()
    {
-      return (head==null ? null : head.data);
+      return (size==0 ? null : data[size-1]);
    }
    
    public T peek2()
    {
       if (size<2)
          throw new EmptyStackException();
-      return head.next.data;
+      return data[size-2];
    }
 
    public boolean isEmpty()
    {
-      return head==null;
+      return size==0;
    }
 
    public void clear()
    {
-      head=null;
       size=0;
    }
 
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
-      Node cur=head;
-      while(cur != null)
+      for(int i = size-1; i >= 0; --i)
       {
-         sb.append(cur.data.toString());
-         sb.append((cur.next==null ? "" : ", "));
-         cur = cur.next;
+         sb.append(data[i].toString());
+         sb.append((i == 0 ? "" : ", "));
+         
       }
       return sb.toString();
 }
 
    public void remove(int n)
    {
-      T discard;
-      Node cur = head;
-      int count=0;
-      while(cur != null && count<n)
-      {
-         discard=this.pop();
-         ++count;
-         --size;
-      }
+      size -= n;
    }
 
    public void pushAll(T[] a)
