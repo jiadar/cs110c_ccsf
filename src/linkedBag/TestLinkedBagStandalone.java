@@ -39,7 +39,7 @@ public class TestLinkedBagStandalone {
       mybag.add(2);
       mybag.add(3);
       mybag.removeLast();
-      assertEquals(mybag.toString(), "3 -> 2 -> ");            
+      assertEquals(mybag.toString(), "3 -> 2 -> z ");            
    }
       
    public static void testAdd()
