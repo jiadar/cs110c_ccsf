@@ -39,6 +39,8 @@ public class TestLinkedBag {
    {
       LinkedBag<Integer> mybag = new LinkedBag<Integer>();
       mybag.add(1);
+      mybag.add(2);
+      mybag.add(3);
       mybag.removeLast();
       assertEquals(mybag.toString(), " -> ");            
    }
