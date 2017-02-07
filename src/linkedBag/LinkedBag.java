@@ -38,7 +38,6 @@ public class LinkedBag<T> implements BagInterface<T>
 
    public T removeLast()
    {
-      Node cur = head;
       if (head == null)
          return null;
 
