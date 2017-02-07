@@ -63,15 +63,15 @@ public class LinkedBag<T> implements BagInterface<T>
 
    public void reverse()
    {
-      T temp;
+      T temp=this.removeLast();
       LinkedBag<T> tbag = new LinkedBag<T>();
 
       Node cur = head;
 
       while (temp != null)
       {
-         temp = this.removeLast();
          tbag.add(temp);
+         temp = this.removeLast();
       }
 
       lmsg.info("initial: " + this.toString());
