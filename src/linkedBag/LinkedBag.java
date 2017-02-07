@@ -48,7 +48,8 @@ public class LinkedBag<T> implements BagInterface<T>
          lmsg.info("data " + cur.data);
          cur = cur.next;
       }
-
+         lmsg.info("data " + cur.data);
+      
       cur = null;
       return cur.data;
    }
