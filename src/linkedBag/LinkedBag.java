@@ -57,7 +57,7 @@ public class LinkedBag<T> implements BagInterface<T>
       if (head == null)
          return null;
       rval = head.data;
-      head.next = head.next.next;
+      head = head.next;
       return rval;         
    }
    
