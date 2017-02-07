@@ -140,6 +140,7 @@ public class LinkedBag<T> implements BagInterface<T>
       {
          tempBagAry[count]=cur.data;
          ++count;
+         cur = cur.next;
       }
       return tempBagAry;
    }
