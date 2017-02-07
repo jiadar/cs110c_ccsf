@@ -66,7 +66,7 @@ public class LinkedBag<T> implements BagInterface<T>
       T temp;
       LinkedBag tbag;
 
-      cur = head;
+      Node cur = head;
 
       while (temp = this.remove != null)
          tbag.add(temp);
