@@ -75,7 +75,7 @@ public class LinkedBag<T> implements BagInterface<T>
       }
 
       lmsg.info("initial: " + this.toString());
-      this=tbag;
+      this.head=tbag.head;
       lmsg.info("now: " + this.toString());
       
    }
