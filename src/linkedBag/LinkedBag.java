@@ -133,7 +133,7 @@ public class LinkedBag<T> implements BagInterface<T>
 
    public T[] toArray()
    {
-      @SuppressWarnings("unchecked") T[] tempBagAry=(T[])new Object[size];
+      @SuppressWarnings("unchecked") T[] tempBagAry=(T[])new Object[size+1];
       Node cur = head;
       int count = 0;
       while (cur != null)
