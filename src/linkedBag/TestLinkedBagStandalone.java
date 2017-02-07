@@ -27,9 +27,7 @@ public class TestLinkedBagStandalone {
    {
       LinkedBag<Integer> mybag = new LinkedBag<Integer>();
       mybag.add(1);
-      mybag.add(2);
-      mybag.add(3);
-      assertEquals(mybag.toString(), "3 -> 2 -> 1 -> ");      
+      assertEquals(mybag.toString(), " -> ");      
    }
 
    public static void testRemoveLast()
