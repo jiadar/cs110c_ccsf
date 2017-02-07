@@ -64,7 +64,7 @@ public class LinkedBag<T> implements BagInterface<T>
    public void reverse()
    {
       Node cur=head;
-      Node prev==null;
+      Node prev=null;
       Node next;
       while(cur!=null)
       {
