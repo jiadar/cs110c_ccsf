@@ -60,6 +60,16 @@ public class TestLinkedBag {
    }
 
    @Test
+   public void testToArray()
+   {   
+      LinkedBag<Integer> mybag = new LinkedBag<Integer>();
+      mybag.add(1);
+      mybag.add(2);
+      mybag.add(3);
+      assertEquals(mybag.toArray().toString(), "");
+   }
+
+   @Test
    public void testAdd()
    {
       LinkedBag<Integer> mybag = new LinkedBag<Integer>();

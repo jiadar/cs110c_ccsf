@@ -53,6 +53,15 @@ public class TestLinkedBagStandalone {
       assertEquals(mybag.toString(), "1 -> 2 -> 3 -> null");            
    }
 
+   public static void testToArray()
+   {   
+      LinkedBag<Integer> mybag = new LinkedBag<Integer>();
+      mybag.add(1);
+      mybag.add(2);
+      mybag.add(3);
+      assertEquals(mybag.toArray().toString(), "");
+   }
+
    public static void testAdd()
    {
       LinkedBag<Integer> mybag = new LinkedBag<Integer>();
@@ -243,6 +252,7 @@ testTests();
 testRemoveLast();
 testRemoveFirst();
 testReverse();
+testToArray();
 testAdd();
 testRemove();
 testEmpty();

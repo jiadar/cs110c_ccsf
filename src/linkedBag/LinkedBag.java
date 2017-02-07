@@ -33,7 +33,6 @@ public class LinkedBag<T> implements BagInterface<T>
          return null;
 
       if (head.next == null) {
-         lmsg.info("in 1 element condition");
          rval = head.data;
          head = null;
          return rval;
@@ -46,7 +45,6 @@ public class LinkedBag<T> implements BagInterface<T>
       }
 
       rval = cur.next.data;
-      lmsg.info("Returning: " + rval);
       cur.next = null;
       return rval;
    }
