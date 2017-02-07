@@ -12,6 +12,7 @@ import java.util.logging.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
+import java.lang.reflect.Array;
 
 public class LinkedBag<T> implements BagInterface<T>
 {
@@ -171,16 +172,19 @@ public class LinkedBag<T> implements BagInterface<T>
 
    public T[] toArray()
    {
-      @SuppressWarnings("unchecked") T[] tempBagAry=(T[]) new Object[size];
+      T[] tempBagAry = (T[]) Array.newInstance(T.class, size);
+//@SuppressWarnings("unchecked") T[] tempBagAry=(T[]) new Object[size];
       Node cur = head;
       int count = 0;
       while (cur != null)
       {
-         tempBagAry[count]=cur.data;
+         Array.set(tempBagAry, count, cur.data);
+
+//         tempBagAry[count]=cur.data;
          ++count;
          cur = cur.next;
       }
-      return (T[])tempBagAry;
+      return tempBagAry.toArray();
    }
 
  public String toString() {

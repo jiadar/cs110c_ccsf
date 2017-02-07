@@ -66,7 +66,7 @@ public class TestLinkedBag {
       mybag.add(1);
       mybag.add(2);
       mybag.add(3);
-      Integer[] ary = mybag.toArray();
+      Object[] ary = mybag.toArray();
       assertEquals((Integer) ary[0], (Integer) 3);
       assertEquals((Integer) ary[1], (Integer) 2);
       assertEquals((Integer) ary[2], (Integer) 1);
