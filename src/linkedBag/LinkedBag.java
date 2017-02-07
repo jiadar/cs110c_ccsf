@@ -60,6 +60,22 @@ public class LinkedBag<T> implements BagInterface<T>
       head = head.next;
       return rval;         
    }
+
+   public void reverse()
+   {
+      T temp;
+      LinkedBag tbag;
+
+      cur = head;
+
+      while (temp = this.remove != null)
+         tbag.add(temp);
+
+      lmsg.info("initial: " + this.toString());
+      head=tbag.head;
+      lmsg.info("now: " + this.toString());
+      
+   }
    
    public int getCurrentSize()
    {

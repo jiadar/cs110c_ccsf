@@ -43,6 +43,16 @@ public class TestLinkedBagStandalone {
       assertEquals(mybag.toString(), "2 -> 1 -> null");            
    }
 
+   public static void testReverse()
+   {
+      LinkedBag<Integer> mybag = new LinkedBag<Integer>();
+      mybag.add(1);
+      mybag.add(2);
+      mybag.add(3);
+      mybag.reverse();
+      assertEquals(mybag.toString(), "1 -> 2 -> 3 -> null");            
+   }
+
    public static void testAdd()
    {
       LinkedBag<Integer> mybag = new LinkedBag<Integer>();
@@ -232,6 +242,7 @@ public static void main(String[] args) {
 testTests();
 testRemoveLast();
 testRemoveFirst();
+testReverse();
 testAdd();
 testRemove();
 testEmpty();

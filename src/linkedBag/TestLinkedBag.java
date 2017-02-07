@@ -49,6 +49,17 @@ public class TestLinkedBag {
    }
 
    @Test
+   public void testReverse()
+   {
+      LinkedBag<Integer> mybag = new LinkedBag<Integer>();
+      mybag.add(1);
+      mybag.add(2);
+      mybag.add(3);
+      mybag.reverse();
+      assertEquals(mybag.toString(), "1 -> 2 -> 3 -> null");            
+   }
+
+   @Test
    public void testAdd()
    {
       LinkedBag<Integer> mybag = new LinkedBag<Integer>();
