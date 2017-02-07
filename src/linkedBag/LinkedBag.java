@@ -68,8 +68,11 @@ public class LinkedBag<T> implements BagInterface<T>
 
       Node cur = head;
 
-      while ((temp = this.remove()) != null)
+      while (cur != null)
+      {
+         temp = this.remove())
          tbag.add(temp);
+      }
 
       lmsg.info("initial: " + this.toString());
       head=tbag.head;
