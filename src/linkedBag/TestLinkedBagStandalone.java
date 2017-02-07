@@ -59,7 +59,7 @@ public class TestLinkedBagStandalone {
       mybag.add(1);
       mybag.add(2);
       mybag.add(3);
-      T[] ary = mybag.toArray();
+      Integer[] ary = mybag.toArray();
       assertEquals(ary[0], 3);
       assertEquals(ary[1], 2);
       assertEquals(ary[2], 1);
