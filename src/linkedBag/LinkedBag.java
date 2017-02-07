@@ -12,6 +12,7 @@ import java.util.logging.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
+import java.lang.reflect.Array;
 
 public class LinkedBag<T> implements BagInterface<T>
 {
@@ -181,7 +182,7 @@ public class LinkedBag<T> implements BagInterface<T>
          ++count;
          cur = cur.next;
       }
-      return tempBagAry.toArray();
+      return tempBagAry;
    }
 
  public String toString() {
