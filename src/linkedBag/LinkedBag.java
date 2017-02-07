@@ -35,6 +35,24 @@ public class LinkedBag<T> implements BagInterface<T>
       }
       return rval;
    }
+
+   public T removeLast()
+   {
+      Node cur = head;
+      if (head == null)
+         return null;
+
+      Node cur = head;
+
+      while (cur.next != null)
+      {
+         cur=cur.next;
+      }
+      
+      return cur.next.data;
+      cur.next=null;
+
+   }
    
    public int getCurrentSize()
    {
