@@ -22,7 +22,16 @@ public class TestLinkedBagStandalone {
    {
       assertEquals(true, true);
    }
-   
+
+   public static void testToString()
+   {
+      LinkedBag<Integer> mybag = new LinkedBag<Integer>();
+      mybag.add(1);
+      mybag.add(2);
+      mybag.add(3);
+      assertEquals(mybag.toString(), "1 -> 2 -> 3 -> ");      
+   }
+      
    public static void testAdd()
    {
       LinkedBag<Integer> mybag = new LinkedBag<Integer>();
@@ -210,6 +219,7 @@ public class TestLinkedBagStandalone {
 
 public static void main(String[] args) {
 testTests();
+testToString();
 testAdd();
 testRemove();
 testEmpty();

@@ -76,12 +76,17 @@ public class LinkedStack<T> implements Stack<T> {
       while(cur != null && count<n)
       {
          discard=this.pop();
+         ++count;
+         --size;
       }
    }
 
    public void pushAll(T[] a)
    {
       for(int i = 0; i < a.length; ++i)
+      {
          this.push(a[i]);
+         ++size;
+      }
    }
 }

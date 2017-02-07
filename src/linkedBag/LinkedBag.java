@@ -25,6 +25,17 @@ public class LinkedBag<T> implements BagInterface<T>
       public Node next;
    }
 
+   public String toString()
+   {
+      T[] abc = this.toArray();
+      String rval = "";
+      for(T item : abc)
+      {
+         rval += item.toString() + " -> ";
+      }
+      return rval;
+   }
+   
    public int getCurrentSize()
    {
       return size;
@@ -123,23 +134,30 @@ public class LinkedBag<T> implements BagInterface<T>
    public T[] toArray()
    {
       @SuppressWarnings("unchecked") T[] tempBagAry=(T[])new Object[1];
+      Node cur = head;
+      int count = 0;
+      while (cur != null)
+      {
+         tempBagAry[count]=cur.data;
+         ++count;
+      }
       return tempBagAry;
    }
 
-   public String toString() {
-      if (size == 0)
-         return "null";
+   // public String toString() {
+   //    if (size == 0)
+   //       return "null";
 
-      String rval="";
-      Node cur = head;
+   //    String rval="";
+   //    Node cur = head;
 
-      while (cur != null) {
-         rval += cur.data.toString() + " -> ";
-         cur = cur.next;
-      }
-      rval+="null";
-      return rval;
-   }
+   //    while (cur != null) {
+   //       rval += cur.data.toString() + " -> ";
+   //       cur = cur.next;
+   //    }
+   //    rval+="null";
+   //    return rval;
+   // }
 
    private Node getReferenceTo(T anEntry)
    {

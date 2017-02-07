@@ -25,7 +25,17 @@ public class TestLinkedBag {
    {
       assertEquals(true, true);
    }
-   
+
+   @Test
+   public void testToString()
+   {
+      LinkedBag<Integer> mybag = new LinkedBag<Integer>();
+      mybag.add(1);
+      mybag.add(2);
+      mybag.add(3);
+      assertEquals(mybag.toString(), "1 -> 2 -> 3 -> ");      
+   }
+      
    @Test
    public void testAdd()
    {
