@@ -99,7 +99,12 @@ public class TestStackStandalone {
       StackTraceElement e = stacktrace[2];
       String methodName = e.getMethodName();
       String result;
-      if (value1.equals(value2))
+      if (value1 == null && value2 == null)
+      {
+         result="PASS";
+         ++passes;
+      }
+      else if (value1.equals(value2))
       {
          result="PASS";
          ++passes;
@@ -115,6 +120,9 @@ public class TestStackStandalone {
 
    
 public static void main(String[] args) {
+testLinkedStack();
+testArrayStack();
+testTests();
 System.out.println("Total Tests: " + tests);
 System.out.println("Tests Passed: " + passes);
 System.out.println("Tests Failed: " + fails);

@@ -103,7 +103,12 @@ public class TestStack {
       StackTraceElement e = stacktrace[2];
       String methodName = e.getMethodName();
       String result;
-      if (value1.equals(value2))
+      if (value1 == null && value2 == null)
+      {
+         result="PASS";
+         ++passes;
+      }
+      else if (value1.equals(value2))
       {
          result="PASS";
          ++passes;
