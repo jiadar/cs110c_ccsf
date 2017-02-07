@@ -180,7 +180,7 @@ public class LinkedBag<T> implements BagInterface<T>
          ++count;
          cur = cur.next;
       }
-      return tempBagAry;
+      return (T[])tempBagAry;
    }
 
  public String toString() {
