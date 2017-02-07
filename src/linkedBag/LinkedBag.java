@@ -38,20 +38,28 @@ public class LinkedBag<T> implements BagInterface<T>
 
    public T removeLast()
    {
+      T rval;
+
       if (head == null)
          return null;
 
+      if (head.next == null) {
+         rval = head.data;
+         head = null;
+         return rval;
+      }
+      
       Node cur = head;
 
-      while (cur.next != null)
+      while (cur.next.next != null)
       {
          cur = cur.next;
       }
 
-      T rval = cur.data;
+      T rval = cur.next.data;
       lmsg.info("Returning: " + rval);
       lmsg.info("cur.next = " + cur.next);
-      cur = null;
+      cur.next = null;
       return rval;
    }
    
