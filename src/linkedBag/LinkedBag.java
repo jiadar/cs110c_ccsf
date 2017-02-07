@@ -49,8 +49,6 @@ public class LinkedBag<T> implements BagInterface<T>
       }
       
       return cur.next.data;
-      cur.next=null;
-
    }
    
    public int getCurrentSize()
