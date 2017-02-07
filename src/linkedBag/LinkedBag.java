@@ -51,7 +51,7 @@ public class LinkedBag<T> implements BagInterface<T>
       }
       
       Node cur = head;
-      while (cur.next.next != null)
+      while (cur.next.next.next != null)
       {
          cur = cur.next;
       }
