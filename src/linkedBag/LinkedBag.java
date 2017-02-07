@@ -47,7 +47,7 @@ public class LinkedBag<T> implements BagInterface<T>
       {
          cur=cur.next;
       }
-      
+      cur.next=null;
       return cur.next.data;
    }
    
