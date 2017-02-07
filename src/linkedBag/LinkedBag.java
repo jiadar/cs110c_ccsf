@@ -45,13 +45,12 @@ public class LinkedBag<T> implements BagInterface<T>
 
       while (cur.next != null)
       {
-         lmsg.info("data " + cur.data);
          cur = cur.next;
       }
-         lmsg.info("data " + cur.data);
-      
+
+      T rval = cur.data;
       cur = null;
-      return cur.data;
+      return rval;
    }
    
    public int getCurrentSize()
