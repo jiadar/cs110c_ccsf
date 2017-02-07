@@ -26,14 +26,6 @@ public class TestLinkedBag {
       assertEquals(true, true);
    }
 
-   // @Test
-   // public void testToString()
-   // {
-   //    LinkedBag<Integer> mybag = new LinkedBag<Integer>();
-   //    mybag.add(1);
-   //    assertEquals(mybag.toString(), " -> ");      
-   // }
-
    @Test
    public void testRemoveLast()
    {
@@ -44,7 +36,18 @@ public class TestLinkedBag {
       mybag.removeLast();
       assertEquals(mybag.toString(), "3 -> 2 -> null");            
    }
-      
+
+      @Test
+   public void testRemoveFirst()
+   {
+      LinkedBag<Integer> mybag = new LinkedBag<Integer>();
+      mybag.add(1);
+      mybag.add(2);
+      mybag.add(3);
+      mybag.removeLast();
+      assertEquals(mybag.toString(), "2 -> 1 -> null");            
+   }
+
    @Test
    public void testAdd()
    {

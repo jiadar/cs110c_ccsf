@@ -23,13 +23,6 @@ public class TestLinkedBagStandalone {
       assertEquals(true, true);
    }
 
-   // public static void testToString()
-   // {
-   //    LinkedBag<Integer> mybag = new LinkedBag<Integer>();
-   //    mybag.add(1);
-   //    assertEquals(mybag.toString(), " -> ");      
-   // }
-
    public static void testRemoveLast()
    {
       LinkedBag<Integer> mybag = new LinkedBag<Integer>();
@@ -39,7 +32,17 @@ public class TestLinkedBagStandalone {
       mybag.removeLast();
       assertEquals(mybag.toString(), "3 -> 2 -> null");            
    }
-      
+
+   public static void testRemoveFirst()
+   {
+      LinkedBag<Integer> mybag = new LinkedBag<Integer>();
+      mybag.add(1);
+      mybag.add(2);
+      mybag.add(3);
+      mybag.removeLast();
+      assertEquals(mybag.toString(), "2 -> 1 -> null");            
+   }
+
    public static void testAdd()
    {
       LinkedBag<Integer> mybag = new LinkedBag<Integer>();
@@ -227,8 +230,8 @@ public class TestLinkedBagStandalone {
 
 public static void main(String[] args) {
 testTests();
-void;
 testRemoveLast();
+testRemoveFirst();
 testAdd();
 testRemove();
 testEmpty();
