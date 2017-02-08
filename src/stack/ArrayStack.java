@@ -1,8 +1,11 @@
 package stack;
 import java.util.EmptyStackException;
 import java.util.Arrays;
+import java.util.logging.*;
 
 public class ArrayStack<T> implements Stack<T> {
+
+   private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
    private int size=0;
    private T[] data;
@@ -29,6 +32,7 @@ public class ArrayStack<T> implements Stack<T> {
    {
       checkCapacity(size*2);
       data = Arrays.copyOf(data, size*2);
+      size *= 2; 
    }
 
    private void checkCapacity(int capacity)
@@ -43,6 +47,7 @@ public class ArrayStack<T> implements Stack<T> {
       if (size == MAX_CAPACITY-1)
          this.doubleSize();
       ++size;
+      lmsg("Pushed " + data[size] + " size=" + size);
    }
    
    public T pop()
@@ -51,6 +56,7 @@ public class ArrayStack<T> implements Stack<T> {
          return null;
 
       --size;
+      lmsg("Popped " + data[size] + " size=" + size);
       return data[size];
    }
 
@@ -79,12 +85,16 @@ public class ArrayStack<T> implements Stack<T> {
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
-      for(int i = size-1; i >= 0; --i)
+      if (size > 0)
       {
-         sb.append(data[i].toString());
-         sb.append((i == 0 ? "" : ", "));
-         
+         for(int i = size-1; i >= 0; --i)
+         {
+            lmsg.info("processing: " + i + "\n");
+            sb.append(data[i].toString());
+            sb.append((i == 0 ? "" : ", "));  
+         }          
       }
+      
       return sb.toString();
 }
 
