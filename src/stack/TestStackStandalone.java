@@ -81,7 +81,7 @@ public class TestStackStandalone {
       assertEquals(s.peek(), (Integer) 1);
 
       s.pushAll(new Integer[]{2, 3, 4});
-      assertEquals(s.toString(), "4, 3, 2, 1");
+      assertEquals(s.toString(), "5, 4, 3, 2, 1");
 
       s.remove(4);
       assertEquals(s.isEmpty(), true);

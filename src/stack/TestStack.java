@@ -51,6 +51,7 @@ public class TestStack {
       assertEquals(s.isEmpty(), true);
    }      
 
+   @Test
    public void testArrayStack() {
       Stack<Integer> s = new ArrayStack<Integer>();
       Integer d;
@@ -84,7 +85,7 @@ public class TestStack {
       assertEquals(s.peek(), (Integer) 1);
 
       s.pushAll(new Integer[]{2, 3, 4});
-      assertEquals(s.toString(), "4, 3, 2, 1");
+      assertEquals(s.toString(), "5, 4, 3, 2, 1");
 
       s.remove(4);
       assertEquals(s.isEmpty(), true);
