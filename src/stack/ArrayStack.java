@@ -47,7 +47,6 @@ public class ArrayStack<T> implements Stack<T> {
       if (size == MAX_CAPACITY-1)
          this.doubleSize();
       ++size;
-      lmsg.info("Pushed " + data[size] + " size=" + size);
    }
    
    public T pop()
@@ -56,7 +55,6 @@ public class ArrayStack<T> implements Stack<T> {
          return null;
 
       --size;
-      lmsg.info("Popped " + data[size] + " size=" + size);
       return data[size];
    }
 
@@ -89,7 +87,6 @@ public class ArrayStack<T> implements Stack<T> {
       {
          for(int i = size-1; i >= 0; --i)
          {
-            lmsg.info("processing: " + i + "\n");
             sb.append(data[i].toString());
             sb.append((i == 0 ? "" : ", "));  
          }          
@@ -109,7 +106,6 @@ public class ArrayStack<T> implements Stack<T> {
       {
          lmsg.info("i= " + i + " a[i]= " + a[i]);
          this.push(a[i]);
-         ++size;
       }
    }
 }

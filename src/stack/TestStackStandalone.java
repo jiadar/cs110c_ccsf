@@ -48,7 +48,8 @@ public class TestStackStandalone {
       assertEquals(s.isEmpty(), true);
    }      
 
-   public static void testArrayStack() {
+   public static void testArrayStack()
+   {
       Stack<Integer> s = new ArrayStack<Integer>();
       Integer d;
       assertEquals(s.peek(), null);
@@ -80,13 +81,18 @@ public class TestStackStandalone {
       s.remove(2);
       assertEquals(s.peek(), (Integer) 1);
 
-      s.pushAll(new Integer[]{2, 3, 4});
-      assertEquals(s.toString(), "5, 4, 3, 2, 1");
-
-      s.remove(4);
-      assertEquals(s.isEmpty(), true);
    }      
 
+   public static void testArrayPushAll()
+   {
+      Stack<Integer> s = new ArrayStack<Integer>();
+      s.push(1);
+      s.pushAll(new Integer[]{2, 3, 4});
+      assertEquals(s.toString(), "5, 4, 3, 2, 1");
+      s.remove(4);
+      assertEquals(s.isEmpty(), true);
+      
+   }
    public static void testTests()
    {
       assertEquals(true, true);
@@ -122,6 +128,7 @@ public class TestStackStandalone {
 public static void main(String[] args) {
 testLinkedStack();
 testArrayStack();
+testArrayPushAll();
 testTests();
 System.out.println("Total Tests: " + tests);
 System.out.println("Tests Passed: " + passes);
