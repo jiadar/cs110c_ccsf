@@ -49,7 +49,7 @@ if [ 1 -eq $MAKE_SA_TEST ] ; then
         sed -e 's/SEDMe//g' | sed -e '/} \/\/end/d' >> $STANDALONE_TESTER.java
     cat main.tmp >> $STANDALONE_TESTER.java                            
     javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$STANDALONE_TESTER.java
-    #rm main.tmp
+    rm main.tmp
     popd >/dev/null 2>&1
     pushd $BINDIR >/dev/null 2>&1
     java $PKG.$STANDALONE_TESTER | grep -v PASS
@@ -59,7 +59,7 @@ fi
    
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
-if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
+#if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
     pushd $SRCDIR >/dev/null 2>&1
     git add -u 
     git commit -m "Auto commit"
@@ -75,7 +75,7 @@ if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
     COPYFILE_DISABLE=1 tar czf tgz/$PKG-$VS.tgz  src/$PKG bin/$PKG 
     ls -l tgz/$PKG-$VS.tgz
     popd >/dev/null 2>&1
-fi
+#fi
 
 
 
