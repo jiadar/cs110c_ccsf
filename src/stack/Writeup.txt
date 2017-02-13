@@ -1,0 +1,22 @@
+It took me 3 hours to write this code from scratch, the junit test, the build
+file, and the script to change the junit test into a standalone test, and the
+automated git commit and package creation. 
+
+I wrote the linked stack version first, and was able to write it with only 3 syntax
+errors (amazing cause I'm just learning java). The array stack I had more errors,
+including a curious null pointer exception as I was adding to size during the
+loop. It took getting out the debugger to track down the error by stepping through
+the code. This probably took 30 minutes or more to track down the one error.
+
+The code works, and the assignment was very easy. It would be much more interesting
+more challenging to implement a method to return the max element, evaluate an RPN
+expression, test for correct nesting of ([<"">]), evaluate a directory tree/path
+name, etc and actually use the data structure. I thought of implementing these
+for entertainment, but had too much math homework.
+
+
+
+
+
+
+
