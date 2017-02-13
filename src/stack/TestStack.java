@@ -52,7 +52,7 @@ public class TestStack {
    }      
 
    @Test
-   public void testArrayStack()
+   public void testArrayStack1()
    {
       Stack<Integer> s = new ArrayStack<Integer>();
       Integer d;
@@ -88,12 +88,12 @@ public class TestStack {
    }      
 
    @Test
-   public void testArrayPushAll()
+   public void testArrayStack2()
    {
       Stack<Integer> s = new ArrayStack<Integer>();
       s.push(1);
       s.pushAll(new Integer[]{2, 3, 4});
-      assertEquals(s.toString(), "5, 4, 3, 2, 1");
+      assertEquals(s.toString(), "4, 3, 2, 1");
       s.remove(4);
       assertEquals(s.isEmpty(), true);
       

@@ -103,10 +103,7 @@ public class ArrayStack<T> implements Stack<T> {
    public void pushAll(T[] a)
    {
       for(int i = 0; i < a.length; ++i)
-      {
-         lmsg.info("i= " + i + " a[i]= " + a[i]);
          this.push(a[i]);
-      }
    }
 }
 
