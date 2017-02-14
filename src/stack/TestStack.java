@@ -98,6 +98,16 @@ public class TestStack {
       assertEquals(s.isEmpty(), true);
       
    }
+
+   @Test
+   public void testMillion()
+   {
+      Stack<Integer> s = new LinkedStack<Integer>();
+      for(int i = 0; i < 1000000; ++i)
+         s.push(i);
+      assertEquals(s.pop(), 999999);
+   }
+   
    @Test
    public void testTests()
    {

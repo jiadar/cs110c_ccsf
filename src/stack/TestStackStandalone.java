@@ -93,6 +93,15 @@ public class TestStackStandalone {
       assertEquals(s.isEmpty(), true);
       
    }
+
+   public static void testMillion()
+   {
+      Stack<Integer> s = new LinkedStack<Integer>();
+      for(int i = 0; i < 1000000; ++i)
+         s.push(i);
+      assertEquals(s.pop(), 999999);
+   }
+   
    public static void testTests()
    {
       assertEquals(true, true);
@@ -129,6 +138,7 @@ public static void main(String[] args) {
 testLinkedStack();
 testArrayStack1();
 testArrayStack2();
+testMillion();
 testTests();
 System.out.println("Total Tests: " + tests);
 System.out.println("Tests Passed: " + passes);
