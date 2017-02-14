@@ -23,8 +23,7 @@ public class LinkedStack<T> implements Stack<T> {
    
    public T pop()
    {
-      if (head==null)
-         return null;
+      if (this.isEmpty()) return null;
       
       T data = head.data;
       head=head.next;
