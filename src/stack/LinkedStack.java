@@ -1,13 +1,13 @@
 package stack;
 
-import java.util.Deque;
+import java.util.LinkedDeque;
 import java.util.EmptyStackException;
 
 public class LinkedStack<T> implements Stack<T> {
 
    private Node head=null;
    private int size=0;
-   private Deque ms = new Deque<MinFreq>();
+   private LinkedDeque ms = new LinkedDeque<MinFreq>();
    
    private class Node
    {
