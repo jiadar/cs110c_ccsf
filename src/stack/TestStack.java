@@ -105,7 +105,7 @@ public class TestStack {
       Stack<Integer> s = new LinkedStack<Integer>();
       for(int i = 0; i < 1000000; ++i)
          s.push(i);
-      assertEquals(s.pop(), 999999);
+      assertEquals((Integer) s.pop(), (Integer) 999999);
    }
    
    @Test
