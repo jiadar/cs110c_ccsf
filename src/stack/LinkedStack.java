@@ -35,7 +35,7 @@ public class LinkedStack<T> implements Stack<T> {
       }
       if (newEntry < ms.peek().data)
       {
-         MinFreq m = new MinFreq;
+         MinFreq m = new MinFreq();
          m.data=newEntry;
          m.freq=1;
          ms.push(m);         
@@ -50,7 +50,7 @@ public class LinkedStack<T> implements Stack<T> {
       head=head.next;
       --size;
 
-      MinFreq m = new MinFreq;
+      MinFreq m = new MinFreq();
       if (data == MinFreq.peek().data)
       {
          MinFreq m = ms.pop();
