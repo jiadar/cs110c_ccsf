@@ -16,7 +16,7 @@ public class LinkedStack<T> implements Stack<T> {
    {
       Node temp=new Node();
       temp.data=newEntry;
-      temp.next=head;
+      head=temp;
       ++size;
    }
    
