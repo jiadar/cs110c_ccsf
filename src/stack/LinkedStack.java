@@ -7,7 +7,7 @@ public class LinkedStack<T> implements Stack<T> {
 
    private Node head=null;
    private int size=0;
-   private MinStack ms = new Deque<MinFreq>();
+   private Deque ms = new Deque<MinFreq>();
    
    private class Node
    {
