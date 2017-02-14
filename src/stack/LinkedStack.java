@@ -54,6 +54,11 @@ public class LinkedStack<T> implements Stack<T> {
       size=0;
    }
 
+   public void display()
+   {
+      System.out.println(this);
+   }
+   
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -79,7 +84,7 @@ public class LinkedStack<T> implements Stack<T> {
          --size;
       }
    }
-
+      
    public void pushAll(T[] a)
    {
       for(int i = 0; i < a.length; ++i)
