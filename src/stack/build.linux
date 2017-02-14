@@ -56,7 +56,9 @@ if [ 1 -eq $MAKE_SA_TEST ] ; then
     popd >/dev/null 2>&1
     echo
 fi
-   
+
+java $PKG.MyStack.class 
+
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
 #if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
