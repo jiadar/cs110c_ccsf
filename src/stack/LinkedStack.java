@@ -6,12 +6,20 @@ public class LinkedStack<T> implements Stack<T> {
 
    private Node head=null;
    private int size=0;
+   private MinStack ms = new LinkedStack<MinFreq>();
    
-   private class Node {
+   private class Node
+   {
       public T data;
       public Node next;
    }
 
+   private class MinFreq
+   {
+      public T data;
+      public int freq;
+   }
+   
    public void push(T newEntry)
    {
       Node temp=new Node();
@@ -19,6 +27,19 @@ public class LinkedStack<T> implements Stack<T> {
       temp.next=head;
       head=temp;
       ++size;
+      if (newEntry == ms.peek().data)
+      {
+         MinFreq m = ms.pop();
+         ++m.freq;
+         ms.push(m);                  
+      }
+      if (newEntry < ms.peek().data)
+      {
+         MinFreq m = new MinFreq;
+         m.data=newEntry;
+         m.freq=1;
+         ms.push(m);         
+      }      
    }
    
    public T pop()
@@ -28,6 +49,18 @@ public class LinkedStack<T> implements Stack<T> {
       T data = head.data;
       head=head.next;
       --size;
+
+      MinFreq m = new MinFreq;
+      if (data == MinFreq.peek().data)
+      {
+         MinFreq m = ms.pop();
+         if (m.data > 1)
+         {
+            --m.data;
+            ms.push(m);
+         }
+      }
+
       return data;
    }
 
@@ -84,7 +117,22 @@ public class LinkedStack<T> implements Stack<T> {
          --size;
       }
    }
+
+   public void min()
+   {      
+      MinFreq mf = minstack.peek();
+      if (mf.freq > 1)
+      {
+         --mf.freq;
+         minstack.pop();
+         minstack.push(mf);
+      }
+      else
+         minstack.pop();
       
+      return mf.data; 
+   }
+   
    public void pushAll(T[] a)
    {
       for(int i = 0; i < a.length; ++i)
