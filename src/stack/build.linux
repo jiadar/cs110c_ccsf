@@ -57,7 +57,7 @@ if [ 1 -eq $MAKE_SA_TEST ] ; then
     echo
 fi
 
-java $PKG.MyStack.class 
+java $PKG.MyStack
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
