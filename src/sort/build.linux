@@ -24,8 +24,8 @@ do
 done
 
 java -cp .:$BINDIR:$LIBDIR $PKG.$TESTER
-java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar\
-     org.junit.runner.JUnitCore $PKG.SortsTest
+#java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar\
+#     org.junit.runner.JUnitCore $PKG.SortsTest
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 

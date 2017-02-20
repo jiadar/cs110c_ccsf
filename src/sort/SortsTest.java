@@ -3,10 +3,16 @@ package sort;
 import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.*;
 
 import org.junit.Test;
 
 public class SortsTest {
+
+   private static int tests=0;
+   private static int passes=0;
+   private static int fails=0;
+   private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
    @Test
    public void testMin() {
@@ -46,10 +52,12 @@ public class SortsTest {
    public void testRandomSelectionSort()
    {   
       Integer[] data1 = new Integer[10000];
+      Integer[] data2 = new Integer[10000];
       data1 = Sorts.generator(10000, 100000, 999999);
-      Integer[] data2 = System.arraycopy(data1, 0, data2, 0, 10000);
-      int swaps = Sorts.numberOfSwapsInSelectionSort(data);
+      data2 = Arrays.copyOf(data1, data1.length);
+      int swaps = Sorts.numberOfSwapsInSelectionSort(data1);
       Arrays.sort(data2);
       assertEquals(data1, data2);
+      lmsg.info("Swaps for 10,000 selection sort = " + swaps);
    }
 }
