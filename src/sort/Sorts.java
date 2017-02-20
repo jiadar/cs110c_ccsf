@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Sorts {
 
-   private static <T extends Comparable<? super T>> int findMin(T[] data, int idx)
+   public static <T extends Comparable<? super T>> int findMin(T[] data, int idx)
    {
       if (data == null)
          return -1;
@@ -34,8 +34,12 @@ public class Sorts {
    selectionSortSublist(T[] data, int idx)
    {
       int min = findMin(data, idx);
-      swapElts(data, idx, min);
-      return 1;
+      if (data[idx].compareTo(data[min]) > 0)
+      {
+         swapElts(data, idx, min);
+         return 1;
+      }
+      return 0;
    }
    
    public static <T extends Comparable<? super T>> int
@@ -79,9 +83,9 @@ public class Sorts {
    {
       Integer[] data = new Integer[100];
       data = generator(10, 10, 99);
-      System.out.println(Arrays.toString(data));
-      int swaps = numberOfSwapsInSelectionSort(data);
-      System.out.println(Arrays.toString(data));
+      //     System.out.println(Arrays.toString(data));
+      //int swaps = numberOfSwapsInSelectionSort(data);
+      //System.out.println(Arrays.toString(data));
    }
 }
 
