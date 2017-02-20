@@ -18,22 +18,28 @@ public class Sorts {
       return min;      
    }
 
+   private static void swapElts(Object[] data, int idx1, int idx2)
+   {
+      Object temp = data[idx1];
+      data[idx1] = data[idx2];
+      data[idx2] = temp;
+   }
+   
    public static <T extends Comparable<? super T>> int numberOfSwapsInSelectionSort(T[] data)
    {
-      int cur = 0;
-      int min = 0;
       int count=0;
-      
       T temp = null;
-      
-      while ( cur < data.length )
+
+      for(int i=0; i < data.length; ++i)
       {
-         min = findMin(data, cur);
-         temp = data[cur];
-         data[cur]=data[min];
-         data[min] = data[cur];
-         ++cur;
-         ++count;
+         int cur = i;
+         while ( cur < data.length )
+         {
+            int min = findMin(data, i);
+            swapElts(data, i, min);
+            ++cur;
+            ++count;
+         }
       }
 
       return count;
