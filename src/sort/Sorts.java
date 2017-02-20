@@ -1,5 +1,7 @@
 package sort;
 
+import java.util.Arrays;
+
 public class Sorts {
 
    private static <T extends Comparable<? super T>> int findMin(T[] data, int idx)
@@ -43,24 +45,30 @@ public class Sorts {
 
    private static long rand(long range, long seed)
    {
+      long x = seed;
       x ^= (x << 21);
       x ^= (x >>> 35);
       x ^= (x << 4);
       return x % range;
    }
 
-   public static int[] generator(int elts)
+   public static long[] generator(int elts)
    {
       long seed = System.nanoTime();
-      int[] data = new int[elts-1];
-      for(i = 0; i < elts; ++i)
-         data[i] = rand(100, seed);
+      long[] data = new long[elts];
+      for(int i = 0; i < elts; ++i)
+      {
+         seed = rand(100, seed);
+         data[i] = seed;
+      }
+      return data;
    }
 
    public static void main(String[] args)
    {
-      data=generator(100);
-      System.out.println(data);
+      long[] data = new long[100];
+      data = generator(100);
+      System.out.println(Arrays.toString(data));
    }
 }
 
