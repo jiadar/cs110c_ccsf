@@ -57,7 +57,7 @@ public class Sorts {
       while (sortedIndex < data.length)
       {
          count += selectionSortSublist(data, sortedIndex);
-         ++count;
+         ++sortedIndex;
       }
       return count;
    }
