@@ -29,7 +29,7 @@ java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar\
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 
-if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
+if test "$(find $SRCDIR/.timestamp -mmin +15)" ; then
     pushd $SRCDIR >/dev/null 2>&1
     git add -u 
     git commit -m "Auto commit"

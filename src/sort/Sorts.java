@@ -7,20 +7,19 @@ public class Sorts {
 
    public static <T extends Comparable<? super T>> int findMin(T[] data, int idx)
    {
-      if (data == null)
-         return -1;
-
-      int min = idx;
-      for(int i = idx; i < data.length; ++i)
-      {  
-         if (data[i].compareTo(data[idx]) < 0) 
-         {         
+      int min=idx;
+      int currentMin = min;
+      
+      for(int i = idx; i<data.length; i++)
+      {
+         if(data[i].compareTo(data[currentMin) < 0)
+         {
             min = i;
-            System.out.print("idx = " + idx + " i= " + i +  " min = " + data[min] + " ");
-            System.out.println(Arrays.toString(data));
+            currentMin=i;
          }
       }
-      return min;      
+      
+      return min;
    }
 
    private static void swapElts(Object[] data, int idx1, int idx2)
@@ -34,12 +33,10 @@ public class Sorts {
    selectionSortSublist(T[] data, int idx)
    {
       int min = findMin(data, idx);
-      if (data[idx].compareTo(data[min]) > 0)
-      {
-         swapElts(data, idx, min);
-         return 1;
-      }
-      return 0;
+      System.out.println("MIN = " + data[min]);
+      swapElts(data, idx, min);
+      System.out.println(Arrays.toString(data));
+      return 1;
    }
    
    public static <T extends Comparable<? super T>> int
@@ -81,11 +78,12 @@ public class Sorts {
 
    public static void main(String[] args)
    {
-      Integer[] data = new Integer[100];
-      data = generator(10, 10, 99);
-      //     System.out.println(Arrays.toString(data));
-      //int swaps = numberOfSwapsInSelectionSort(data);
-      //System.out.println(Arrays.toString(data));
+//      Integer[] data = new Integer[100];
+      //    data = generator(8, 10, 99);
+      Integer[] data = {63, 32, 11, 21, 75, 57, 45, 54};
+      System.out.println(Arrays.toString(data));
+      int swaps = numberOfSwapsInSelectionSort(data);
+      System.out.println(Arrays.toString(data));
    }
 }
 

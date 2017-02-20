@@ -19,5 +19,8 @@ public class SortsTest {
      assertEquals(Sorts.findMin(b, 2), 2);
      assertEquals(Sorts.findMin(b, 3), 4);
      assertEquals(Sorts.findMin(b, 4), 4);
+     Integer[] c = {63, 32, 11, 21, 75, 57, 45, 54};
+     assertEquals(Sorts.findMin(c, 0), 2);
+
   }
 }
