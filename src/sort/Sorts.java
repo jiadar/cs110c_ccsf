@@ -112,18 +112,22 @@ foreach (gap in gaps)
       while(data.length < gaps[gapIndex])
          ++gapindex;
 
-      int gap = gaps[gapIndex]
+      int gap = gaps[gapIndex];
       while(gap > 1)
       {
+
          for(int i = gap; i < data.length; ++i)
          {
             temp = data[i];
-            for (int j = i; j >= gap && data[j - gap])
+
+            for (int j = i; j >= gap && data[j - gap]; j -= gap)
             {
-               data[j] = data[j - gap]
+               data[j] = data[j - gap];
             }
+            
             data[j] = temp;
          }
+
          ++gapIndex;
          gap = gaps[gapIndex];
       }
