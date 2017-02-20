@@ -34,12 +34,8 @@ public class Sorts {
    selectionSortSublist(T[] data, int idx)
    {
       int min = findMin(data, idx);
-      if (data[idx].compareTo(data[min]) < 0)
-      {
-         swapElts(data, idx, min);
-         return 1;
-      }
-      return 0;
+      swapElts(data, idx, min);
+      return 1;
    }
    
    public static <T extends Comparable<? super T>> int
