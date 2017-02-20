@@ -83,46 +83,26 @@ public class Sorts {
     *
     */
 
-/*
-# Start with the largest gap and work down to a gap of 1
-foreach (gap in gaps)
-{
-    # Do a gapped insertion sort for this gap size.
-    # The first gap elements a[0..gap-1] are already in gapped order
-    # keep adding one more element until the entire array is gap sorted
-    for (i = gap; i < n; i += 1)
-    {
-        # add a[i] to the elements that have been gap sorted
-        # save a[i] in temp and make a hole at position i
-        temp = a[i]
-        # shift earlier gap-sorted elements up until the correct location for a[i] is found
-        for (j = i; j >= gap and a[j - gap] > temp; j -= gap)
-        {
-            a[j] = a[j - gap]
-        }
-        # put temp (the original a[i]) in its correct location
-        a[j] = temp
-    }
-}
-*/   
    public static <T extends Comparable<? super T>> int numberOfSwapsInShellSort(T[] data)
    {
-      int[] gaps = {701, 301, 132, 57, 23, 10, 4, 1};
+      int[] gaps = {701, 301, 132, 57, 23, 10, 4, 1, 0};
       int gapIndex=0;
+      int i=0, j=0, swaps=0;
       while(data.length < gaps[gapIndex])
-         ++gapindex;
+         ++gapIndex;
 
       int gap = gaps[gapIndex];
-      while(gap > 1)
+
+      while(gap >= 1)
       {
-
-         for(int i = gap; i < data.length; ++i)
+         for(i = gap; i < data.length; ++i)
          {
-            temp = data[i];
+            T temp = data[i];
 
-            for (int j = i; j >= gap && data[j - gap]; j -= gap)
+            for (j = i; (j >= gap) && (data[j - gap].compareTo(temp) > 0); j -= gap)
             {
                data[j] = data[j - gap];
+               ++swaps;
             }
             
             data[j] = temp;
@@ -132,7 +112,7 @@ foreach (gap in gaps)
          gap = gaps[gapIndex];
       }
       
-      return 0;
+      return swaps;
    }
 
    public static Integer[] generator(int elts, int min, int max)
@@ -143,15 +123,15 @@ foreach (gap in gaps)
       return data;
    }
 
-   public static void main(String[] args)
-   {
-      Integer[] data = new Integer[100];
-      data = generator(10, 10, 99);
-      System.out.println(Arrays.toString(data));
-      int swaps = numberOfSwapsInShellSort(data);
-      System.out.println(Arrays.toString(data));
-      System.out.println(swaps);      
-   }
+   // public static void main(String[] args)
+   // {
+   //    Integer[] data = new Integer[100];
+   //    data = generator(100, 10, 99);
+   //    System.out.println(Arrays.toString(data));
+   //    int swaps = numberOfSwapsInShellSort(data);
+   //    System.out.println(Arrays.toString(data));
+   //    System.out.println(swaps);      
+   // }
 }
 
 

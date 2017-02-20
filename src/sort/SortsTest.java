@@ -60,4 +60,34 @@ public class SortsTest {
       assertEquals(data1, data2);
       lmsg.info("Swaps for 10,000 selection sort = " + swaps);
    }
+
+   @Test
+   public void testShellSortResult()
+   {
+      Integer[] a = {82, 33, 38, 25, 57, 33, 97, 17, 59, 68, 84, 30, 11, 73, 67, 31, 53, 79, 81, 84, 22, 94, 14, 54, 78, 28, 19, 94, 68, 45, 16, 33, 44, 53, 48, 66, 42, 96, 25, 44, 61, 77, 37, 53, 40, 56, 65, 50, 72, 88};
+      Integer[] b = {11, 14, 16, 17, 19, 22, 25, 25, 28, 30, 31, 33, 33, 33, 37, 38, 40, 42, 44, 44, 45, 48, 50, 53, 53, 53, 54, 56, 57, 59, 61, 65, 66, 67, 68, 68, 72, 73, 77, 78, 79, 81, 82, 84, 84, 88, 94, 94, 96, 97};
+      assertNotEquals(Arrays.toString(a), Arrays.toString(b));
+      int swaps = Sorts.numberOfSwapsInShellSort(a);
+      assertEquals(Arrays.toString(a), Arrays.toString(b));
+   }
+   
+   @Test
+   public void testShellSortSwaps()
+   {
+      Integer[] a = {53, 19, 19, 22, 23, 75, 50, 78, 77, 96, 23, 61, 29, 82, 93, 80, 40, 44, 87, 15, 33, 45, 69, 49, 11, 39, 13, 87, 25, 93, 85, 55, 47, 67, 33, 27, 10, 49, 76, 91, 91, 14, 14, 70, 96, 35, 88, 13, 65, 91};
+      assertEquals(Sorts.numberOfSwapsInShellSort(a), 44);
+   }
+
+   @Test
+   public void testRandomShellSort()
+   {   
+      Integer[] data1 = new Integer[10000];
+      Integer[] data2 = new Integer[10000];
+      data1 = Sorts.generator(10000, 100000, 999999);
+      data2 = Arrays.copyOf(data1, data1.length);
+      int swaps = Sorts.numberOfSwapsInShellSort(data1);
+      Arrays.sort(data2);
+      assertEquals(data1, data2);
+      lmsg.info("Swaps for 10,000 shell sort = " + swaps);
+   }
 }
