@@ -1,6 +1,7 @@
 package sort;
 
 import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Sorts {
 
@@ -16,7 +17,7 @@ public class Sorts {
 
       return min;      
    }
-   
+
    public static <T extends Comparable<? super T>> int numberOfSwapsInSelectionSort(T[] data)
    {
       int cur = 0;
@@ -43,31 +44,20 @@ public class Sorts {
       return 0;
    }
 
-   private static long rand(long range, long seed)
+   public static Integer[] generator(int elts, int max)
    {
-      long x = seed;
-      x ^= (x << 21);
-      x ^= (x >>> 35);
-      x ^= (x << 4);
-      return x % range;
-   }
-
-   public static long[] generator(int elts)
-   {
-      long seed = System.nanoTime();
-      long[] data = new long[elts];
+      Integer[] data = new Integer[elts];
       for(int i = 0; i < elts; ++i)
-      {
-         seed = rand(100, seed);
-         data[i] = seed;
-      }
+         data[i] = ThreadLocalRandom.current().nextInt(0, max-1);
       return data;
    }
 
    public static void main(String[] args)
    {
-      long[] data = new long[100];
-      data = generator(100);
+      Integer[] data = new Integer[100];
+      data = generator(100, 100);
+      System.out.println(Arrays.toString(data));
+      int swaps = numberOfSwapsInSelectionSort(data);
       System.out.println(Arrays.toString(data));
    }
 }
