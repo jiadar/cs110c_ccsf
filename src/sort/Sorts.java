@@ -123,15 +123,28 @@ public class Sorts {
       return data;
    }
 
-   // public static void main(String[] args)
-   // {
-   //    Integer[] data = new Integer[100];
-   //    data = generator(100, 10, 99);
-   //    System.out.println(Arrays.toString(data));
-   //    int swaps = numberOfSwapsInShellSort(data);
-   //    System.out.println(Arrays.toString(data));
-   //    System.out.println(swaps);      
-   // }
+   private static void testSwaps(int elts)
+   {
+      Integer[] data1 = new Integer[elts];
+      Integer[] data2 = new Integer[elts];
+      data1 = generator(elts, 0, 1000000);
+      data2 = Arrays.copyOf(data1, data1.length);
+      System.out.print(elts + " , " + numberOfSwapsInSelectionSort(data1));
+      System.out.println(" , " + numberOfSwapsInShellSort(data2));
+      
+   }
+   
+   public static void main(String[] args)
+   {
+      System.out.println("Number of Elements, Selection Swaps, Shell Swaps");
+      testSwaps(10);
+      testSwaps(100);
+      testSwaps(500);
+      testSwaps(1000);
+      testSwaps(2500);
+      testSwaps(5000);
+      testSwaps(10000);
+   }
 }
 
 

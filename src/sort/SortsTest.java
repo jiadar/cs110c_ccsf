@@ -75,7 +75,7 @@ public class SortsTest {
    public void testShellSortSwaps()
    {
       Integer[] a = {53, 19, 19, 22, 23, 75, 50, 78, 77, 96, 23, 61, 29, 82, 93, 80, 40, 44, 87, 15, 33, 45, 69, 49, 11, 39, 13, 87, 25, 93, 85, 55, 47, 67, 33, 27, 10, 49, 76, 91, 91, 14, 14, 70, 96, 35, 88, 13, 65, 91};
-      assertEquals(Sorts.numberOfSwapsInShellSort(a), 44);
+      assertEquals(Sorts.numberOfSwapsInShellSort(a), 123);
    }
 
    @Test
