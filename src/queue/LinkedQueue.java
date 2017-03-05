@@ -89,8 +89,8 @@ public class LinkedQueue<T> implements QueueInterface<T>
          valid = cur != freeNode ? true : false;
          
       }
+      return rval;
    }
-   return rval;
 }
 
 
