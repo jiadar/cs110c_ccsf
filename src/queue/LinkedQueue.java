@@ -36,10 +36,18 @@ public class LinkedQueue<T> implements QueueInterface<T>
    {
       if (isEmpty())
       {
+         // In the empty case, put new data into firstNode
+         firstNode.data = data;
+
+         // Make a new tmp to be freeNode 
          Node tmp = new Node();
-         freeNode.data = data;
-         firstNode = freeNode;
+
+         // Link tmp to firstNode
          firstNode.next = tmp;
+
+         // Link freeNode to tmp
+         freeNode = tmp;
+         
       }
       else
       {
