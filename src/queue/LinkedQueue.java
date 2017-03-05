@@ -13,6 +13,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    private Node freeNode = new Node();
    private Node firstNode = freeNode;
+   freeNode.next = firstNode;
       
    private class Node
    {
