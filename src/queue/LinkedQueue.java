@@ -6,6 +6,10 @@
    $Notice: (C) Copyright 2017 by Ross Capdeville. All Rights Reserved. $
    =========================================================================== */
 
+package queue;
+
+import java.util.EmptyQueueException;
+
 public class LinkedQueue<T> implements QueueInterface<T>
 {
 
