@@ -19,12 +19,10 @@ public class TestQueue {
    }
 
    @Test
-   public void testEnqueue()
+   public void testOneEnqueue()
    {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
       q.enqueue(1);
-      q.enqueue(2);
-      q.enqueue(3);
       assertEquals(q.toString(), "1, 2, 3");
    }
    
