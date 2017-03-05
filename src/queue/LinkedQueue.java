@@ -95,7 +95,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
    public static void main(String[] args)
    {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
-      q.enqueue("1");
+      q.enqueue(1);
       System.out.println(q.toString());
                                 
    }
