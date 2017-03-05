@@ -8,8 +8,6 @@
 
 package queue;
 
-import java.util.EmptyQueueException;
-
 public class LinkedQueue<T> implements QueueInterface<T>
 {
 
