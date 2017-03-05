@@ -38,8 +38,8 @@ public class LinkedQueue<T> implements QueueInterface<T>
       {
          Node tmp = new Node();
          freeNode.data = data;
-         queueNode = freeNode;
-         queueNode.next = tmp;
+         firstNode = freeNode;
+         firstNode.next = tmp;
       }
       else
       {
