@@ -16,6 +16,7 @@ public class TestQueue {
    {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
       assertEquals(q.isEmpty(), true);
+      assertEquals(q.toString(), "empty");
    }
 
    @Test
