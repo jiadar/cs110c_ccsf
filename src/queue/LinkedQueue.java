@@ -27,7 +27,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
       return false;
    }
 
-   public void enqueue()
+   public void enqueue(T data)
    {
       
    }
