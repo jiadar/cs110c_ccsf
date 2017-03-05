@@ -12,10 +12,10 @@ public class TestQueue {
    private static final Logger lmsg = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
    @Test
-   public void testInstance()
+   public void testNewInstance()
    {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
-      assertEquals(true, true);
+      assertEquals(q.isEmpty(), true);
    }
    
    // @Test
