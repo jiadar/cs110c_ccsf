@@ -17,8 +17,8 @@ public class LinkedQueue<T> implements QueueInterface<T>
       
    private class Node
    {
-      public T data = null;
-      public Node next = null;
+      public T data;
+      public Node next;
    }
 
 
