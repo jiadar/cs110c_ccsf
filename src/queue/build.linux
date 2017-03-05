@@ -26,7 +26,8 @@ do
     javac -cp .:$BINDIR:$LIBDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar -d $BINDIR $SRCDIR/$CLASS
 done
 
-java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar org.junit.runner.JUnitCore $PKG.$TESTER
+java -ea -cp .:$BINDIR 
+java -ea -cp .:$BINDIR:$LIBDIR $PKG.LinkedQueue.java
 
 # # sed and awk the test file into a standalone test
 # if [ 1 -eq $MAKE_SA_TEST ] ; then
