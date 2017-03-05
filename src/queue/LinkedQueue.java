@@ -34,7 +34,20 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public void enqueue(T data)
    {
-      
+      if (isEmpty())
+      {
+         Node tmp = new Node();
+         freeNode.data = data;
+         queueNode = freeNode;
+         queueNode.next = tmp;
+      }
+      else
+      {
+         Node tmp = new Node();
+         freeNode.data = data;
+         freeNode.next = tmp;
+         freeNode = freeNode.next;         
+      }
    }
    
    public T dequeue()
@@ -53,6 +66,29 @@ public class LinkedQueue<T> implements QueueInterface<T>
       T tmp = null;
       return tmp;
       
+   }
+
+   public String toString()
+   {
+      Node cur = firstNode;
+      String rval = "";
+      boolean valid = true;
+      
+      if (this.isEmpty())
+         return "empty";
+
+      rval = cur.data + ", ";
+      cur = cur.next;
+            
+      while (cur != firstNode)
+      {
+         rval += valid ? cur.data + ", " : "free, ";
+
+         cur = cur.next;
+
+         valid = cur != freeNode ? true : false;
+         
+      }
    }
 }
 

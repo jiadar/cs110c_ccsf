@@ -17,6 +17,16 @@ public class TestQueue {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
       assertEquals(q.isEmpty(), true);
    }
+
+   @Test
+   public void testEnqueue()
+   {
+      QueueInterface<Integer> q = new LinkedQueue<Integer>();
+      q.enqueue(1);
+      q.enqueue(2);
+      q.enqueue(3);
+      assertEquals(q.toString(), "1, 2, 3");
+   }
    
    // @Test
    // public void testLinkedStack() {

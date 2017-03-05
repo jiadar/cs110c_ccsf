@@ -25,5 +25,7 @@ public interface QueueInterface<T>
 
    //Remove all elements from the queue
    public void clear();
-   
+
+   //Prints a string of the queue
+   public String toString();
 }
