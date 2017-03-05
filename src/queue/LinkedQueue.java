@@ -32,7 +32,8 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public T dequeue()
    {
-      
+      T tmp = null;
+      return tmp;
    }
 
    public void clear()
@@ -42,6 +43,8 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public T getFront()
    {
+      T tmp = null;
+      return tmp;
       
    }
 }

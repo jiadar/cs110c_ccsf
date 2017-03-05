@@ -5,6 +5,9 @@
    $Creator: Ross Capdeville $
    $Notice: (C) Copyright 2017 by Ross Capdeville. All Rights Reserved. $
    =========================================================================== */
+
+package queue;
+
 public interface QueueInterface<T>
 {
    // Adds new entry to the back of the queue
