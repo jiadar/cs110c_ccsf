@@ -23,9 +23,15 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public boolean isEmpty()
    {
-      return free.next.equals(first);
+//      return free.next.equals(first);
+      return false;
    }
 
+   public void enqueue()
+   {
+      
+   }
+   
    public T dequeue()
    {
       T tmp = null;
