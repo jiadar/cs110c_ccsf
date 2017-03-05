@@ -1,0 +1,86 @@
+#!/bin/bash
+
+# User Configurable 
+DEVHOME=/Users/ross/work
+PROJ="cs110c_ccsf"
+PKG="queue"
+VERBOSE=false
+CLASSES="QueueInterface.java LinkedQueue.java TestQueue.java";
+TESTER="TestQueue"
+STANDALONE_TESTER="TestQueueStandalone"
+MAKE_SA_TEST=1
+
+# Should not have to configure anything below 
+LIBDIR=$DEVHOME/$PROJ/lib
+BINDIR=$DEVHOME/$PROJ/bin
+SRCDIR=$DEVHOME/$PROJ/src/$PKG
+DOCDIR=$DEVHOME/doc/$PKG
+
+if [ ! -d $LIBDIR ] ; then mkdir -p $LIBDIR ; fi
+if [ ! -d $BINDIR ] ; then mkdir -p $BINDIR ; fi
+if [ ! -d $DOCDIR ] ; then mkdir -p $DOCDIR ; fi
+if [ ! -f $SRCDIR/.timestamp ] ; then touch $SRCDIR/.timestamp ; fi
+
+for CLASS in $CLASSES
+do
+    javac -cp .:$BINDIR:$LIBDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar -d $BINDIR $SRCDIR/$CLASS
+done
+
+java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar org.junit.runner.JUnitCore $PKG.$TESTER
+
+# # sed and awk the test file into a standalone test
+# if [ 1 -eq $MAKE_SA_TEST ] ; then
+#     pushd $SRCDIR >/dev/null 2>&1
+#     cp $TESTER.java $STANDALONE_TESTER.java
+#     echo "public static void main(String[] args) {" > main.tmp
+#     cat $STANDALONE_TESTER.java | grep "public void" | grep \(\) |\
+#         awk '{print $3 ";"}' >> main.tmp
+#     echo "System.out.println(\"Total Tests: \" + tests);" >> main.tmp
+#     echo "System.out.println(\"Tests Passed: \" + passes);" >> main.tmp
+#     echo "System.out.println(\"Tests Failed: \" + fails);" >> main.tmp
+#     echo "}}" >> main.tmp
+#     if [ -f $STANDALONE_TESTER.java ] ; then rm $STANDALONE_TESTER.java ; fi
+
+#     # // TODO: ross fix the literal string here to use variable
+
+#     cat $TESTER.java | sed -e 's/TestQueue {/TestQueueStandalone {/g' |\
+#         sed -e '/junit/d' | sed -e '/@Test/d' |\
+#         sed -e 's/public\ void/public\ static\ void/g' |\
+#         sed -e 's/SEDMe//g' | sed -e '/} \/\/end/d' >> $STANDALONE_TESTER.java
+#     cat main.tmp >> $STANDALONE_TESTER.java                            
+#     javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$STANDALONE_TESTER.java
+#     rm main.tmp
+#     popd >/dev/null 2>&1
+#     pushd $BINDIR >/dev/null 2>&1
+#     java $PKG.$STANDALONE_TESTER | grep -v PASS
+#     popd >/dev/null 2>&1
+#     echo
+# fi
+
+# if it's been more than 10 minutes, commit the changes and make a tar ball
+
+#if test "$(find $SRCDIR/.timestamp -mmin +10)" ; then
+    pushd $SRCDIR >/dev/null 2>&1
+    git add -u 
+    git commit -m "Auto commit"
+    git push
+    touch .timestamp
+    popd >/dev/null 2>&1
+    echo
+    
+    # tgz the project for uploading
+    pushd $DEVHOME/$PROJ >/dev/null 2>&1
+    if [ ! -d $DEVHOME/$PROJ/tgz ] ; then mkdir $DEVHOME/$PROJ/tgz; fi 
+    VS=$(date +%y%m%d-%H%M%S)
+    COPYFILE_DISABLE=1 tar czf tgz/$PKG-$VS.tgz  src/$PKG bin/$PKG 
+    ls -l tgz/$PKG-$VS.tgz
+    popd >/dev/null 2>&1
+#fi
+
+
+
+    
+
+						    
+
+
