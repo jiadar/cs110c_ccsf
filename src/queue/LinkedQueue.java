@@ -123,8 +123,44 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public void splice(QueueInterface<T> q)
    {
+      // O(n) if we can not access the memory / references directly
       while(! q.isEmpty())
          this.enqueue(q.dequeue());
+   }
+
+   public void splice2(LinkedQueue<T> q)
+   {
+      // O(1) if we can just splice the two linked chains
+      if (this.isEmpty())
+      {
+         // In the case our instance is empty, just copy the instance variables
+         // from the parameter queue
+         firstNode = q.firstNode;
+         freeNode = q.freeNode;         
+      }
+      else
+      {
+         // In the case where our instance has nodes, just splice in the parameter
+         // queue into free node
+         
+         freeNode = q.firstNode;
+         
+         // Make a new tmp to be freeNode
+         Node newNode = new Node();
+
+         // Link freenode to newNode 
+         freeNode.next = q.freeNode;
+
+         // Link q's freenode back to our firstNode
+         q.freeNode.next = firstNode;
+
+         // Move along freeNode
+         freeNode = freeNode.next;                   
+      }
+         
+      }
+      
+      
    }
 
    public static void main(String[] args)

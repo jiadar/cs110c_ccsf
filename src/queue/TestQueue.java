@@ -85,7 +85,28 @@ public class TestQueue {
       q2.enqueue(6);
       q1.splice(q2);
       assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
-      
+   }
+
+   @Test
+   public void testSplice2()
+   {
+      QueueInterface<Integer> q1 = new LinkedQueue<Integer>();
+      QueueInterface<Integer> q2 = new LinkedQueue<Integer>();
+      q2.enqueue(4);
+      q2.enqueue(5);
+      q2.enqueue(6);
+      q1.splice(q2);
+      assertEquals(q1.toString(),"4, 5, 6, next");
+      q1.clear();
+      q2.clear();
+      q1.enqueue(1);
+      q1.enqueue(2);
+      q1.enqueue(3);
+      q2.enqueue(4);
+      q2.enqueue(5);
+      q2.enqueue(6);
+      q1.splice(q2);
+      assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
    }
 
    public void assertEqualsSEDMe(Comparable value1, Comparable value2)
