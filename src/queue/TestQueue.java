@@ -90,12 +90,12 @@ public class TestQueue {
    @Test
    public void testSplice2()
    {
-      QueueInterface<Integer> q1 = new LinkedQueue<Integer>();
-      QueueInterface<Integer> q2 = new LinkedQueue<Integer>();
+      LinkedQueue<Integer> q1 = new LinkedQueue<Integer>();
+      LinkedQueue<Integer> q2 = new LinkedQueue<Integer>();
       q2.enqueue(4);
       q2.enqueue(5);
       q2.enqueue(6);
-      q1.splice(q2);
+      q1.splice2(q2);
       assertEquals(q1.toString(),"4, 5, 6, next");
       q1.clear();
       q2.clear();
@@ -105,7 +105,7 @@ public class TestQueue {
       q2.enqueue(4);
       q2.enqueue(5);
       q2.enqueue(6);
-      q1.splice(q2);
+      q1.splice2(q2);
       assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
    }
 

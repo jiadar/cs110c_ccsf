@@ -142,22 +142,11 @@ public class LinkedQueue<T> implements QueueInterface<T>
       {
          // In the case where our instance has nodes, just splice in the parameter
          // queue into free node
-         
-         freeNode = q.firstNode;
-         
-         // Make a new tmp to be freeNode
-         Node newNode = new Node();
 
-         // Link freenode to newNode 
-         freeNode.next = q.freeNode;
-
-         // Link q's freenode back to our firstNode
-         q.freeNode.next = firstNode;
-
-         // Move along freeNode
-         freeNode = freeNode.next;                   
-      }
-         
+         freeNode=q.firstNode;
+         q.freeNode=firstNode;
+         firstNode=q.freeNode;
+m
       }
       
       
@@ -165,7 +154,16 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public static void main(String[] args)
    {
-      QueueInterface<Integer> q = new LinkedQueue<Integer>();
+      LinkedQueue<Integer> q1 = new LinkedQueue<Integer>();
+      LinkedQueue<Integer> q2 = new LinkedQueue<Integer>();
+      q1.enqueue(1);
+      q1.enqueue(2);
+      q1.enqueue(3);
+      q2.enqueue(4);
+      q2.enqueue(5);
+      q2.enqueue(6);
+      q1.splice2(q2);
+//      System.out.println(q1.toString());
    }
 }
 
