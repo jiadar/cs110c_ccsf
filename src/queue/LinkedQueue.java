@@ -75,12 +75,16 @@ public class LinkedQueue<T> implements QueueInterface<T>
    
    public T dequeue()
    {
-      T tmp = null;
+      T tmp = getFront();
+      firstNode.data = null;
+      firstNode = firstNode.next; 
       return tmp;
    }
 
    public void clear()
    {
+      freeNode.next = firstNode;
+      firstNode.data = null;
       
    }
 
@@ -106,9 +110,9 @@ public class LinkedQueue<T> implements QueueInterface<T>
             
       while (cur != firstNode)
       {
-         rval += valid ? cur.data + ", " : "free, ";
-         cur = cur.next;
          valid = cur != freeNode ? true : false;
+         rval += valid ? cur.data != null ? cur.data + ", " : "free, " : "next, ";
+         cur = cur.next;
       }
 
       return rval.substring(0, rval.length() - 2);
@@ -117,12 +121,6 @@ public class LinkedQueue<T> implements QueueInterface<T>
    public static void main(String[] args)
    {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
-      q.enqueue(1);
-      q.enqueue(2);
-      q.enqueue(3);
-      q.enqueue(4);
-      System.out.println(q.toString());
-                                
    }
 }
 

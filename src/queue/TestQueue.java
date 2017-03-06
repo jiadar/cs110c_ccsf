@@ -26,121 +26,52 @@ public class TestQueue {
       q.enqueue(1);
       q.enqueue(2);
       q.enqueue(3);
-      assertEquals(q.toString(), "1, 2, 3, free");
+      assertEquals(q.toString(), "1, 2, 3, next");
    }
 
    @Test
-   public void getFront()
+   public void testGetFront()
    {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
       q.enqueue(1);
-      assertEquals(q.getFront(), 1);
+      assertEquals((Integer) q.getFront(), (Integer) 1);
       q.enqueue(2);
-      assertEquals(q.getFront(), 1);
+      assertEquals((Integer) q.getFront(), (Integer) 1);
+   }
+
+   @Test
+   public void testDequeue()
+   {
+      QueueInterface<Integer> q = new LinkedQueue<Integer>();
+      q.enqueue(1);
+      assertEquals(q.toString(), "1, next");
+      q.enqueue(2);
+      assertEquals(q.toString(), "1, 2, next");
+      q.enqueue(3);
+      assertEquals(q.toString(), "1, 2, 3, next");
+      q.enqueue(4);
+      assertEquals(q.toString(), "1, 2, 3, 4, next");
+      q.dequeue();
+      assertEquals(q.toString(), "2, 3, 4, next, free");
+      q.dequeue();
+      assertEquals(q.toString(), "3, 4, next, free, free");
+      q.dequeue();
+      assertEquals(q.toString(), "4, next, free, free, free");
+      q.dequeue();
+      assertEquals(q.toString(), "empty");
+   }
+
+   @Test
+   public void testClear()
+   {
+      QueueInterface<Integer> q = new LinkedQueue<Integer>();
+      q.enqueue(1);
+      q.enqueue(2);
+      assertEquals(q.toString(), "1, 2, next");
+      q.clear();
+      assertEquals(q.toString(), "empty");      
    }
    
-   // @Test
-   // public void testLinkedStack() {
-   //    Stack<Integer> s = new LinkedStack<Integer>();
-   //    Integer d;
-   //    assertEquals(s.peek(), null);
-
-   //    s.push(1);
-   //    s.push(2);
-   //    s.push(3);
-   //    assertEquals(s.peek(), (Integer) 3);
-   //    assertEquals(s.peek2(), (Integer) 2);
-
-   //    d = s.pop();
-   //    assertEquals(d, (Integer) 3);
-   //    assertEquals(s.peek(), (Integer) 2);
-   //    assertEquals(s.peek2(), (Integer) 1);
-   //    assertEquals(s.isEmpty(), false);
-   //    assertEquals(s.toString(), "2, 1");
-
-   //    d = s.pop();
-   //    d = s.pop();
-   //    assertEquals(s.isEmpty(), true);
-
-   //    s.push(1);
-   //    s.clear();
-   //    assertEquals(s.isEmpty(), true);
-
-   //    s.push(1);
-   //    s.push(2);
-   //    s.push(3);
-   //    s.remove(2);
-   //    assertEquals(s.peek(), (Integer) 1);
-
-   //    s.pushAll(new Integer[]{2, 3, 4});
-   //    assertEquals(s.toString(), "4, 3, 2, 1");
-
-   //    s.remove(4);
-   //    assertEquals(s.isEmpty(), true);
-   // }      
-
-   // @Test
-   // public void testArrayStack1()
-   // {
-   //    Stack<Integer> s = new ArrayStack<Integer>();
-   //    Integer d;
-   //    assertEquals(s.peek(), null);
-
-   //    s.push(1);
-   //    s.push(2);
-   //    s.push(3);
-   //    assertEquals(s.peek(), (Integer) 3);
-   //    assertEquals(s.peek2(), (Integer) 2);
-
-   //    d = s.pop();
-   //    assertEquals(d, (Integer) 3);
-   //    assertEquals(s.peek(), (Integer) 2);
-   //    assertEquals(s.peek2(), (Integer) 1);
-   //    assertEquals(s.isEmpty(), false);
-   //    assertEquals(s.toString(), "2, 1");
-
-   //    d = s.pop();
-   //    d = s.pop();
-   //    assertEquals(s.isEmpty(), true);
-
-   //    s.push(1);
-   //    s.clear();
-   //    assertEquals(s.isEmpty(), true);
-
-   //    s.push(1);
-   //    s.push(2);
-   //    s.push(3);
-   //    s.remove(2);
-   //    assertEquals(s.peek(), (Integer) 1);
-
-   // }      
-
-   // @Test
-   // public void testArrayStack2()
-   // {
-   //    Stack<Integer> s = new ArrayStack<Integer>();
-   //    s.push(1);
-   //    s.pushAll(new Integer[]{2, 3, 4});
-   //    assertEquals(s.toString(), "4, 3, 2, 1");
-   //    s.remove(4);
-   //    assertEquals(s.isEmpty(), true);
-      
-   // }
-
-   // @Test
-   // public void testMillion()
-   // {
-   //    Stack<Integer> s = new LinkedStack<Integer>();
-   //    for(int i = 0; i < 1000000; ++i)
-   //       s.push(i);
-   //    assertEquals((Integer) s.pop(), (Integer) 999999);
-   // }
-   
-   // @Test
-   // public void testTests()
-   // {
-   //    assertEquals(true, true);
-   // }
 
    public void assertEqualsSEDMe(Comparable value1, Comparable value2)
    {
