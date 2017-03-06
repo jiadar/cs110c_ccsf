@@ -82,30 +82,30 @@ public class TestQueue {
        q2.enqueue(5);
        q2.enqueue(6);
        q1.splice(q2);
-       assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
+       assertEquals(q1.toString().substring(0,17),"[1, 2, 3, 4, 5, 6");
     }
 
-//    @Test
-//    public void testArraySplice2()
-//    {
-//       ArrayQueue<Integer> q1 = new ArrayQueue<Integer>();
-//       ArrayQueue<Integer> q2 = new ArrayQueue<Integer>();
-//       q2.enqueue(4);
-//       q2.enqueue(5);
-//       q2.enqueue(6);
-//       q1.splice2(q2);
-//       assertEquals(q1.toString(),"4, 5, 6, next");
-//       q1.clear();
-//       q2.clear();
-//       q1.enqueue(1);
-//       q1.enqueue(2);
-//       q1.enqueue(3);
-//       q2.enqueue(4);
-//       q2.enqueue(5);
-//       q2.enqueue(6);
-//       q1.splice2(q2);
-// //      assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
-//    }
+    @Test
+    public void testArraySplice2()
+    {
+       ArrayQueue<Integer> q1 = new ArrayQueue<Integer>();
+       ArrayQueue<Integer> q2 = new ArrayQueue<Integer>();
+       q2.enqueue(4);
+       q2.enqueue(5);
+       q2.enqueue(6);
+       q1.splice2(q2);
+       assertEquals(q1.toString().substring(0,8),"[4,5,6");
+       q1.clear();
+       q2.clear();
+       q1.enqueue(1);
+       q1.enqueue(2);
+       q1.enqueue(3);
+       q2.enqueue(4);
+       q2.enqueue(5);
+       q2.enqueue(6);
+       q1.splice2(q2);
+       assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
+    }
 
    // Start of Linked Tests
    
