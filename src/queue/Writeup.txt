@@ -1,0 +1,12 @@
+I spent 8 hours on this program, most of it was on writing the Linked Circular Queue from
+scratch and trying not to use the book. I got stuck on the enqueue method but after
+that, it went pretty quick for the rest. I needed a toString method to make
+test/debug easier and that took some time to handle the edge cases.
+
+I emailed you logic for the split2 method in the Linked Queue, but I couldn't get it
+to work even though the logic seems right. Everything else works.
+
+I used the Books' ArrayQueue and wrote split and split2 no problem.
+
+The tester took a bit of time to write and tweak.
+
