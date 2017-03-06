@@ -20,11 +20,23 @@ public class TestQueue {
    }
 
    @Test
-   public void testOneEnqueue()
+   public void testEnqueue()
    {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
       q.enqueue(1);
-      assertEquals(q.toString(), "1, 2, 3");
+      q.enqueue(2);
+      q.enqueue(3);
+      assertEquals(q.toString(), "1, 2, 3, free");
+   }
+
+   @Test
+   public void getFront()
+   {
+      QueueInterface<Integer> q = new LinkedQueue<Integer>();
+      q.enqueue(1);
+      assertEquals(q.getFront(), 1);
+      q.enqueue(2);
+      assertEquals(q.getFront(), 1);
    }
    
    // @Test

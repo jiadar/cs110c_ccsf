@@ -6,6 +6,7 @@
    $Notice: (C) Copyright 2017 by Ross Capdeville. All Rights Reserved. $
    =========================================================================== */
 
+
 package queue;
 
 public class LinkedQueue<T> implements QueueInterface<T>
@@ -85,9 +86,10 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public T getFront()
    {
-      T tmp = null;
-      return tmp;
-      
+      if (isEmpty())
+         throw new NullPointerException("Disallowed attempt to get element from empty queue");
+      else
+         return firstNode.data;
    }
 
    public String toString()
@@ -105,13 +107,11 @@ public class LinkedQueue<T> implements QueueInterface<T>
       while (cur != firstNode)
       {
          rval += valid ? cur.data + ", " : "free, ";
-
          cur = cur.next;
-
          valid = cur != freeNode ? true : false;
-         
       }
-      return rval;
+
+      return rval.substring(0, rval.length() - 2);
    }
 
    public static void main(String[] args)
@@ -120,6 +120,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
       q.enqueue(1);
       q.enqueue(2);
       q.enqueue(3);
+      q.enqueue(4);
       System.out.println(q.toString());
                                 
    }
