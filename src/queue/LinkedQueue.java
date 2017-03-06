@@ -9,6 +9,8 @@
 
 package queue;
 
+// Implement a circular linked chain queue
+
 public class LinkedQueue<T> implements QueueInterface<T>
 {
 
@@ -39,7 +41,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
       {
          // In the empty case, put new data into firstNode
          firstNode.data = data;
-
+         
          // Make a new tmp to be freeNode 
          Node tmp = new Node();
 
@@ -68,8 +70,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
          newNode.next = firstNode;
 
          // Move along freeNode
-         freeNode = freeNode.next;          
-         
+         freeNode = freeNode.next;                   
       }
    }
    
@@ -83,9 +84,11 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public void clear()
    {
+      // reset the state to the same as a new LinkedQueue object
+      freeNode = new Node();
+      firstNode = freeNode;
       freeNode.next = firstNode;
       firstNode.data = null;
-      
    }
 
    public T getFront()
@@ -116,6 +119,12 @@ public class LinkedQueue<T> implements QueueInterface<T>
       }
 
       return rval.substring(0, rval.length() - 2);
+   }
+
+   public void splice(QueueInterface<T> q)
+   {
+      while(! q.isEmpty())
+         this.enqueue(q.dequeue());
    }
 
    public static void main(String[] args)

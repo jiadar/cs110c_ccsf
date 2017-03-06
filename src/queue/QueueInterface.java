@@ -28,4 +28,8 @@ public interface QueueInterface<T>
 
    //Prints a string of the queue
    public String toString();
+
+   // Splice the parameter queue on to the end of the receiving queue
+   public void splice(QueueInterface<T> q);
+
 }
