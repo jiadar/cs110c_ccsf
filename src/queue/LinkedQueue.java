@@ -29,7 +29,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public boolean isEmpty()
    {
-      return freeNode.next.equals(firstNode);
+      return freeNode.equals(firstNode);
    }
 
    public void enqueue(T data)
@@ -47,14 +47,28 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
          // Link freeNode to tmp
          freeNode = tmp;
+
+         // Link freenode next back to firstnode
+         freeNode.next = firstNode;
          
       }
       else
       {
-         Node tmp = new Node();
+         // Put data into freeNode
          freeNode.data = data;
-         freeNode.next = tmp;
-         freeNode = freeNode.next;         
+
+         // Make a new tmp to be freeNode
+         Node newNode = new Node();
+
+         // Link freenode to newNode 
+         freeNode.next = newNode; 
+
+         // Link new node to firstNode
+         newNode.next = firstNode;
+
+         // Move along freeNode
+         freeNode = freeNode.next;          
+         
       }
    }
    
@@ -104,6 +118,8 @@ public class LinkedQueue<T> implements QueueInterface<T>
    {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
       q.enqueue(1);
+      q.enqueue(2);
+      q.enqueue(3);
       System.out.println(q.toString());
                                 
    }
