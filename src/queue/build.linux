@@ -27,38 +27,36 @@ do
 done
 
 java -ea -cp .:$BINDIR:$LIBDIR $PKG.LinkedQueue
-echo
-echo
 java -ea -cp .:$BINDIR:$LIBDIR/hamcrest-core-1.3.jar:$LIBDIR/junit-4.12.jar org.junit.runner.JUnitCore $PKG.$TESTER
 
-# # sed and awk the test file into a standalone test
-# if [ 1 -eq $MAKE_SA_TEST ] ; then
-#     pushd $SRCDIR >/dev/null 2>&1
-#     cp $TESTER.java $STANDALONE_TESTER.java
-#     echo "public static void main(String[] args) {" > main.tmp
-#     cat $STANDALONE_TESTER.java | grep "public void" | grep \(\) |\
-#         awk '{print $3 ";"}' >> main.tmp
-#     echo "System.out.println(\"Total Tests: \" + tests);" >> main.tmp
-#     echo "System.out.println(\"Tests Passed: \" + passes);" >> main.tmp
-#     echo "System.out.println(\"Tests Failed: \" + fails);" >> main.tmp
-#     echo "}}" >> main.tmp
-#     if [ -f $STANDALONE_TESTER.java ] ; then rm $STANDALONE_TESTER.java ; fi
+# sed and awk the test file into a standalone test
+if [ 1 -eq $MAKE_SA_TEST ] ; then
+    pushd $SRCDIR >/dev/null 2>&1
+    cp $TESTER.java $STANDALONE_TESTER.java
+    echo "public static void main(String[] args) {" > main.tmp
+    cat $STANDALONE_TESTER.java | grep "public void" | grep \(\) |\
+        awk '{print $3 ";"}' >> main.tmp
+    echo "System.out.println(\"Total Tests: \" + tests);" >> main.tmp
+    echo "System.out.println(\"Tests Passed: \" + passes);" >> main.tmp
+    echo "System.out.println(\"Tests Failed: \" + fails);" >> main.tmp
+    echo "}}" >> main.tmp
+    if [ -f $STANDALONE_TESTER.java ] ; then rm $STANDALONE_TESTER.java ; fi
 
-#     # // TODO: ross fix the literal string here to use variable
+    # // TODO: ross fix the literal string here to use variable
 
-#     cat $TESTER.java | sed -e 's/TestQueue {/TestQueueStandalone {/g' |\
-#         sed -e '/junit/d' | sed -e '/@Test/d' |\
-#         sed -e 's/public\ void/public\ static\ void/g' |\
-#         sed -e 's/SEDMe//g' | sed -e '/} \/\/end/d' >> $STANDALONE_TESTER.java
-#     cat main.tmp >> $STANDALONE_TESTER.java                            
-#     javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$STANDALONE_TESTER.java
-#     rm main.tmp
-#     popd >/dev/null 2>&1
-#     pushd $BINDIR >/dev/null 2>&1
-#     java $PKG.$STANDALONE_TESTER | grep -v PASS
-#     popd >/dev/null 2>&1
-#     echo
-# fi
+    cat $TESTER.java | sed -e 's/TestQueue {/TestQueueStandalone {/g' |\
+        sed -e '/junit/d' | sed -e '/@Test/d' |\
+        sed -e 's/public\ void/public\ static\ void/g' |\
+        sed -e 's/SEDMe//g' | sed -e '/} \/\/end/d' >> $STANDALONE_TESTER.java
+    cat main.tmp >> $STANDALONE_TESTER.java                            
+    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$STANDALONE_TESTER.java
+    rm main.tmp
+    popd >/dev/null 2>&1
+    pushd $BINDIR >/dev/null 2>&1
+    java $PKG.$STANDALONE_TESTER | grep -v PASS
+    popd >/dev/null 2>&1
+    echo
+fi
 
 # if it's been more than 10 minutes, commit the changes and make a tar ball
 

@@ -85,27 +85,33 @@ public class TestQueue {
        assertEquals(q1.toString().substring(0,17),"[1, 2, 3, 4, 5, 6");
     }
 
-    @Test
-    public void testArraySplice2()
-    {
-       ArrayQueue<Integer> q1 = new ArrayQueue<Integer>();
-       ArrayQueue<Integer> q2 = new ArrayQueue<Integer>();
-       q2.enqueue(4);
-       q2.enqueue(5);
-       q2.enqueue(6);
-       q1.splice2(q2);
-       assertEquals(q1.toString().substring(0,8),"[4,5,6");
-       q1.clear();
-       q2.clear();
-       q1.enqueue(1);
-       q1.enqueue(2);
-       q1.enqueue(3);
-       q2.enqueue(4);
-       q2.enqueue(5);
-       q2.enqueue(6);
-       q1.splice2(q2);
-       assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
-    }
+   @Test
+   public void testArraySplice2OneEmpty()
+   {
+      ArrayQueue<Integer> q1 = new ArrayQueue<Integer>();
+      ArrayQueue<Integer> q2 = new ArrayQueue<Integer>();
+      q2.enqueue(4);
+      q2.enqueue(5);
+      q2.enqueue(6);
+      q1.splice2(q2);
+      assertEquals(q1.toString().substring(0,8),"[4, 5, 6");
+   }
+
+   @Test
+   public void testArraySplice2()
+   {
+      ArrayQueue<Integer> q1 = new ArrayQueue<Integer>();
+      ArrayQueue<Integer> q2 = new ArrayQueue<Integer>();
+      q1.enqueue(1);
+      q1.enqueue(2);
+      q1.enqueue(3);
+      assertEquals(q1.toString().substring(0,8),"[1, 2, 3");
+      q2.enqueue(4);
+      q2.enqueue(5);
+      q2.enqueue(6);
+      q1.splice2(q2);
+      assertEquals(q1.toString().substring(0,17),"[1, 2, 3, 4, 5, 6");
+   }
 
    // Start of Linked Tests
    
@@ -186,7 +192,7 @@ public class TestQueue {
    }
 
    @Test
-   public void testLinkedSplice2()
+   public void testLinkedSplice2Empty()
    {
       LinkedQueue<Integer> q1 = new LinkedQueue<Integer>();
       LinkedQueue<Integer> q2 = new LinkedQueue<Integer>();
@@ -197,6 +203,13 @@ public class TestQueue {
       assertEquals(q1.toString(),"4, 5, 6, next");
       q1.clear();
       q2.clear();
+   }      
+
+   @Test
+   public void testLinkedSplice2()
+   {
+      LinkedQueue<Integer> q1 = new LinkedQueue<Integer>();
+      LinkedQueue<Integer> q2 = new LinkedQueue<Integer>();
       q1.enqueue(1);
       q1.enqueue(2);
       q1.enqueue(3);
@@ -204,7 +217,7 @@ public class TestQueue {
       q2.enqueue(5);
       q2.enqueue(6);
       q1.splice2(q2);
-//      assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
+      assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
    }
 
    public void assertEqualsSEDMe(Comparable value1, Comparable value2)
