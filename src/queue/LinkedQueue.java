@@ -146,10 +146,8 @@ public class LinkedQueue<T> implements QueueInterface<T>
          freeNode=q.firstNode;
          q.freeNode=firstNode;
          firstNode=q.freeNode;
-m
+
       }
-      
-      
    }
 
    public static void main(String[] args)
@@ -163,7 +161,7 @@ m
       q2.enqueue(5);
       q2.enqueue(6);
       q1.splice2(q2);
-//      System.out.println(q1.toString());
+      System.out.println(q1.toString());
    }
 }
 
