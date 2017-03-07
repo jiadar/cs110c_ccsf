@@ -25,8 +25,6 @@ public class LinkedQueue<T> implements QueueInterface<T>
       
    private class Node
    {
-      public Node()        { this.value = null;  }
-      public Node(T value) { this.value = value; }
       public T data;
       public Node next;
    }
@@ -37,7 +35,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
       return freeNode.equals(firstNode);
    }
 
-   public void isFull()
+   public boolean isFull()
    {
       return freeNode.next.equals(firstNode);
    }
