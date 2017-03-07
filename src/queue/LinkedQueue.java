@@ -16,28 +16,38 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    private Node freeNode = new Node();
    private Node firstNode = freeNode;
-
+   private int nodeNumber = 0;
+   
    public LinkedQueue()
    {
-      freeNode.next = firstNode;
-      firstNode.data = null;
+      clear();
    }
       
    private class Node
    {
+      public Node()
+      {
+         ++number;
+         this.number = number;
+      }
       public T data;
       public Node next;
+      public int number;
    }
 
 
    public boolean isEmpty()
    {
-      return freeNode.equals(firstNode);
+      // want the same exact reference, not 2 different nodes with the same data
+      // so use == vs .equals
+      return freeNode == firstNode; 
    }
 
    public boolean isFull()
    {
-      return freeNode.next.equals(firstNode);
+      // want the same exact reference, not 2 different nodes with the same data
+      // so use == vs .equals
+      return freeNode.next == firstNode;
    }
    
    public void enqueue(T data)
@@ -60,7 +70,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
          freeNode.next = firstNode;
          
       }
-      else if (isFull())
+      else if (isFull()) // make a new node
       {
          // Put data into freeNode
          freeNode.data = data;
