@@ -25,6 +25,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
       
    private class Node
    {
+      public Node()        { this.value = null;  }
       public Node(T value) { this.value = value; }
       public T data;
       public Node next;
