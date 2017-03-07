@@ -25,6 +25,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
       
    private class Node
    {
+      public Node(T value) { this.value = value; }
       public T data;
       public Node next;
    }
@@ -35,6 +36,11 @@ public class LinkedQueue<T> implements QueueInterface<T>
       return freeNode.equals(firstNode);
    }
 
+   public void isFull()
+   {
+      return freeNode.next.equals(firstNode);
+   }
+   
    public void enqueue(T data)
    {
       if (isEmpty())
@@ -55,7 +61,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
          freeNode.next = firstNode;
          
       }
-      else
+      else if (isFull())
       {
          // Put data into freeNode
          freeNode.data = data;
@@ -72,6 +78,15 @@ public class LinkedQueue<T> implements QueueInterface<T>
          // Move along freeNode
          freeNode = freeNode.next;                   
       }
+      else // use existing capacity
+      {
+         // Put data into freeNode
+         freeNode.data = data;
+
+         // Move along freeNode
+         freeNode = freeNode.next;                   
+      }
+         
    }
    
    public T dequeue()
