@@ -200,7 +200,7 @@ public class TestQueueStandalone {
       q2.enqueue(6);
       q1.splice2(q2);
       assertEquals(true, true);
-//      assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
+      assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
    }
 
    public static void assertEquals(Comparable value1, Comparable value2)

@@ -118,11 +118,17 @@ public class LinkedQueue<T> implements QueueInterface<T>
    public T getFront()
    {
       if (isEmpty())
-         throw new NullPointerException("Disallowed attempt to get element from empty queue");
+         throw new IllegalStateException("Disallowed attempt to get element from empty queue");
       else
          return firstNode.data;
    }
 
+   public String toStringDetail()
+   {
+      // print number with the node
+      return "";
+   }
+   
    public String toString()
    {
       Node cur = firstNode;
@@ -159,8 +165,8 @@ public class LinkedQueue<T> implements QueueInterface<T>
       {
          // In the case our instance is empty, just copy the instance variables
          // from the parameter queue
-         firstNode = q.firstNode;
-         freeNode = q.freeNode;         
+         firstNode.next = q.firstNode;
+         freeNode.next = q.freeNode;         
       }
       else
       {
@@ -176,6 +182,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public static void main(String[] args)
    {
+      // can make loops to exercise the nodes randomly
       boolean verdad = true;
    }
 }
