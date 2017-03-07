@@ -123,13 +123,18 @@ public class LinkedQueue<T> implements QueueInterface<T>
          return firstNode.data;
    }
 
+   public String qNodeString(Node cur)
+   {
+      boolean valid = cur != freeNode ? true : false;
+      return valid ? cur.data != null ? cur.data.toString() : "free " : "next ";
+   }
+
    public String toStringDetail()
    {
-      // print number with the node
-      return "";
+      return toStringDetail(true);
    }
    
-   public String toString()
+   public String toStringDetail(boolean detail)
    {
       Node cur = firstNode;
       String rval = "";
@@ -138,17 +143,22 @@ public class LinkedQueue<T> implements QueueInterface<T>
       if (this.isEmpty())
          return "empty";
 
-      rval = cur.data + ", ";
+      rval = cur.data + detail ? "" : ", ";
       cur = cur.next;
             
       while (cur != firstNode)
       {
-         valid = cur != freeNode ? true : false;
-         rval += valid ? cur.data != null ? cur.data + ", " : "free, " : "next, ";
+         String nStr = "\nNode #" + cur.number + ": "; 
+         rval += detail ? nStr + qNodeString(cur) : qNodeString(cur) + ", ";
          cur = cur.next;
       }
 
       return rval.substring(0, rval.length() - 2);
+   }
+   
+   public String toString()
+   {
+      return toStringDetail(false);
    }
 
    public void splice(QueueInterface<T> q)
@@ -165,25 +175,34 @@ public class LinkedQueue<T> implements QueueInterface<T>
       {
          // In the case our instance is empty, just copy the instance variables
          // from the parameter queue
-         firstNode.next = q.firstNode;
-         freeNode.next = q.freeNode;         
+         firstNode = q.firstNode;
+         freeNode = q.freeNode;         
       }
       else
       {
          // In the case where our instance has nodes, just splice in the parameter
          // queue into free node
 
-         freeNode=q.firstNode;
-         q.freeNode=firstNode;
-         firstNode=q.freeNode;
+         freeNode = q.firstNode;
+         q.freeNode = firstNode;
+         firstNode = q.freeNode;
 
       }
    }
 
    public static void main(String[] args)
    {
-      // can make loops to exercise the nodes randomly
-      boolean verdad = true;
+      LinkedQueue<Integer> q1 = new LinkedQueue<Integer>();
+      LinkedQueue<Integer> q2 = new LinkedQueue<Integer>();
+      q1.enqueue(1);
+      q1.enqueue(2);
+      q1.enqueue(3);
+      q2.enqueue(4);
+      q2.enqueue(5);
+      q2.enqueue(6);
+      q1.splice2(q2);
+      System.out.println(q1.toStringDetail());
+      System.out.println(q2.toStringDetail());
    }
 }
 
