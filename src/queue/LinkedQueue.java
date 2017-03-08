@@ -197,27 +197,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public static void main(String[] args)
    {
-      LinkedQueue<Integer> q1 = new LinkedQueue<Integer>();
-      LinkedQueue<Integer> q2 = new LinkedQueue<Integer>();
-      q1.enqueue(1);
-      q1.enqueue(2);
-      q1.dequeue();
-      q1.enqueue(3);
-      q1.enqueue(4);
-      q1.dequeue();
-      q2.nodeNumber=4;
-      q2.enqueue(4);
-      q1.dequeue();
-      q2.enqueue(5);
-      q2.enqueue(7);
-      q2.enqueue(6);
-      q1.dequeue();
-      System.out.println(q1.toStringDetail());
-      System.out.println(q2.toStringDetail());
-      q1.splice2(q2);
-      System.out.println(q1.toStringDetail());
-      q1.enqueue(10);
-      System.out.println(q1.toStringDetail());
+      boolean verdad = true;
 
    }
 }
