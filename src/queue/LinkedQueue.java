@@ -16,7 +16,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    private Node freeNode = new Node();
    private Node firstNode = freeNode;
-   private int nodeNumber = 0;
+   public int nodeNumber = 0;
    
    public LinkedQueue()
    {
@@ -188,16 +188,10 @@ public class LinkedQueue<T> implements QueueInterface<T>
          // In the case where our instance has nodes, just splice in the parameter
          // queue into free node
 
-         Node tmp_q1_freenode = this.freeNode;
-         Node tmp_q2_freenode = q.freeNode;
-         Node tmp_q1_firstnode = this.firstNode;
-         Node tmp_q2_firstnode = q.firstNode;
-
-         this.freeNode.next = tmp_q2_firstnode;
-         q.freeNode.next = tmp_q1_firstnode;
-//         q.freeNode = this.firstNode;
-//        firstNode = q.freeNode;
-
+         freeNode.data = q.firstNode.data;
+         freeNode.next = q.firstNode.next;
+         freeNode = q.freeNode;
+         freeNode.next = firstNode;
       }
    }
 
@@ -207,13 +201,22 @@ public class LinkedQueue<T> implements QueueInterface<T>
       LinkedQueue<Integer> q2 = new LinkedQueue<Integer>();
       q1.enqueue(1);
       q1.enqueue(2);
+      q1.dequeue();
       q1.enqueue(3);
+      q1.enqueue(4);
+      q1.dequeue();
+      q2.nodeNumber=4;
       q2.enqueue(4);
+      q1.dequeue();
       q2.enqueue(5);
+      q2.enqueue(7);
       q2.enqueue(6);
+      q1.dequeue();
       System.out.println(q1.toStringDetail());
       System.out.println(q2.toStringDetail());
       q1.splice2(q2);
+      System.out.println(q1.toStringDetail());
+      q1.enqueue(10);
       System.out.println(q1.toStringDetail());
 
    }
