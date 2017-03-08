@@ -130,7 +130,7 @@ public class TestQueue {
       q.enqueue(1);
       q.enqueue(2);
       q.enqueue(3);
-      assertEquals(q.toString(), "1, 2, 3, next");
+      assertEquals(q.toString(), "1, 2, 3, free");
    }
 
    @Test
@@ -148,19 +148,19 @@ public class TestQueue {
    {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
       q.enqueue(1);
-      assertEquals(q.toString(), "1, next");
+      assertEquals(q.toString(), "1, free");
       q.enqueue(2);
-      assertEquals(q.toString(), "1, 2, next");
+      assertEquals(q.toString(), "1, 2, free");
       q.enqueue(3);
-      assertEquals(q.toString(), "1, 2, 3, next");
+      assertEquals(q.toString(), "1, 2, 3, free");
       q.enqueue(4);
-      assertEquals(q.toString(), "1, 2, 3, 4, next");
+      assertEquals(q.toString(), "1, 2, 3, 4, free");
       q.dequeue();
-      assertEquals(q.toString(), "2, 3, 4, next, free");
+      assertEquals(q.toString(), "2, 3, 4, free, open");
       q.dequeue();
-      assertEquals(q.toString(), "3, 4, next, free, free");
+      assertEquals(q.toString(), "3, 4, free, open, open");
       q.dequeue();
-      assertEquals(q.toString(), "4, next, free, free, free");
+      assertEquals(q.toString(), "4, free, open, open, open");
       q.dequeue();
       assertEquals(q.toString(), "empty");
    }
@@ -171,7 +171,7 @@ public class TestQueue {
       QueueInterface<Integer> q = new LinkedQueue<Integer>();
       q.enqueue(1);
       q.enqueue(2);
-      assertEquals(q.toString(), "1, 2, next");
+      assertEquals(q.toString(), "1, 2, free");
       q.clear();
       assertEquals(q.toString(), "empty");      
    }
@@ -188,7 +188,7 @@ public class TestQueue {
       q2.enqueue(5);
       q2.enqueue(6);
       q1.splice(q2);
-      assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
+      assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, free");
    }
 
    @Test
@@ -200,7 +200,7 @@ public class TestQueue {
       q2.enqueue(5);
       q2.enqueue(6);
       q1.splice2(q2);
-      assertEquals(q1.toString(),"4, 5, 6, next");
+      assertEquals(q1.toString(),"4, 5, 6, free");
       q1.clear();
       q2.clear();
    }      
@@ -218,7 +218,7 @@ public class TestQueue {
       q2.enqueue(6);
       q1.splice2(q2);
 //      assertEquals(true, true);
-//      assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, next");
+//      assertEquals(q1.toString(),"1, 2, 3, 4, 5, 6, free");
    }
 
    public void assertEqualsSEDMe(Comparable value1, Comparable value2)

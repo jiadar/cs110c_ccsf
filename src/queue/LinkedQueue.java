@@ -188,9 +188,15 @@ public class LinkedQueue<T> implements QueueInterface<T>
          // In the case where our instance has nodes, just splice in the parameter
          // queue into free node
 
-         freeNode = q.firstNode;
-         q.freeNode = firstNode;
-         firstNode = q.freeNode;
+         Node tmp_q1_freenode = this.freeNode;
+         Node tmp_q2_freenode = q.freeNode;
+         Node tmp_q1_firstnode = this.firstNode;
+         Node tmp_q2_firstnode = q.firstNode;
+
+         this.freeNode.next = tmp_q2_firstnode;
+         q.freeNode.next = tmp_q1_firstnode;
+//         q.freeNode = this.firstNode;
+//        firstNode = q.freeNode;
 
       }
    }
