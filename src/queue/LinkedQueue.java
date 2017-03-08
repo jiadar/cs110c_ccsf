@@ -27,8 +27,8 @@ public class LinkedQueue<T> implements QueueInterface<T>
    {
       public Node()
       {
-         ++number;
-         this.number = number;
+         ++nodeNumber;
+         this.number = nodeNumber;
       }
       public T data;
       public Node next;
@@ -125,8 +125,12 @@ public class LinkedQueue<T> implements QueueInterface<T>
 
    public String qNodeString(Node cur)
    {
-      boolean valid = cur != freeNode ? true : false;
-      return valid ? cur.data != null ? cur.data.toString() : "free " : "next ";
+      String rval="";
+      if (cur == freeNode)                // return free if it is the freenode,
+         return "free";
+      if (cur.data == null)               // open if the node is available for reuse
+         return "open";
+      return cur.data.toString();         // and data otherwise
    }
 
    public String toStringDetail()
@@ -143,17 +147,18 @@ public class LinkedQueue<T> implements QueueInterface<T>
       if (this.isEmpty())
          return "empty";
 
-      rval = cur.data + detail ? "" : ", ";
+      String nStr = "\nNode #" + cur.number + ", next #" + cur.next.number + ": "; 
+      rval = detail ? nStr + cur.data : cur.data + ", ";
       cur = cur.next;
             
       while (cur != firstNode)
       {
-         String nStr = "\nNode #" + cur.number + ": "; 
+         nStr = "\nNode #" + cur.number + ", next #" + cur.next.number + ": "; 
          rval += detail ? nStr + qNodeString(cur) : qNodeString(cur) + ", ";
          cur = cur.next;
       }
 
-      return rval.substring(0, rval.length() - 2);
+      return rval.substring(0, rval.length() - (detail ? 0 : 2));
    }
    
    public String toString()
@@ -200,9 +205,11 @@ public class LinkedQueue<T> implements QueueInterface<T>
       q2.enqueue(4);
       q2.enqueue(5);
       q2.enqueue(6);
-      q1.splice2(q2);
       System.out.println(q1.toStringDetail());
       System.out.println(q2.toStringDetail());
+      q1.splice2(q2);
+      System.out.println(q1.toStringDetail());
+
    }
 }
 
