@@ -1,2 +1,8 @@
 
-Wrote today
+Wrote today in about an hour, copied the code from the book and wrote the test as required.
+
+didn't have much time today
+
+Change the TESTVAL to 100000 if you would like, my computer is slow and took awhile
+
+
