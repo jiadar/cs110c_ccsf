@@ -11,24 +11,19 @@ public class ArrayBasedList<T> implements ListInterface<T>
 	private static final int MAX_CAPACITY = 15;
    
 	public ArrayBasedList()
-	{
-		this(DEFAULT_CAPACITY);
-	} 
-   
-	public ArrayBasedList(int initialCapacity)
-	{
-      if (initialCapacity < DEFAULT_CAPACITY)
-         initialCapacity = DEFAULT_CAPACITY;
-      else
-         checkCapacity(initialCapacity);
-      
+	{      
+      int initialCapacity = DEFAULT_CAPACITY;
       @SuppressWarnings("unchecked")
          T[] tempList = (T[])new Object[initialCapacity + 1];
       list = tempList;
       numberOfEntries = 0;
       initialized = true;
 	} 
-   
+
+   public void clear(){ 
+      numberOfEntries=0;
+	}
+
    public T[] toArray()
    {
 		checkInitialization();
@@ -54,7 +49,6 @@ public class ArrayBasedList<T> implements ListInterface<T>
       if (numberOfEntries >= capacity)
       {
          int newCapacity = 2 * capacity;
-         checkCapacity(newCapacity);
          list = Arrays.copyOf(list, newCapacity + 1);
       }
    } 
@@ -75,6 +69,17 @@ public class ArrayBasedList<T> implements ListInterface<T>
             "Given position of add's new entry is out of bounds.");
    }
 
+   public int getLength(){
+		return numberOfEntries;
+	} 
+
+   private void checkInitialization()
+   {
+      if (!initialized)
+         throw new IllegalStateException("Uninitialized object used to call an ArrayBag method.");
+                                               
+   }
+   
    public T remove(int givenPosition)
    {
       checkInitialization();
@@ -91,6 +96,13 @@ public class ArrayBasedList<T> implements ListInterface<T>
          throw new IndexOutOfBoundsException(
             "Illegal position given to remove operation.");
    }   
+
+   private void removeGap(int givenPosition){ 
+      for (int i = givenPosition; i < numberOfEntries; i++)
+      {
+         list[i] = list[i+1];
+	   }
+   } 
 
    public T replace(int givenPosition, T newEntry)
    {
