@@ -63,9 +63,8 @@ public class LinkedChainList<T> extends LinkedChainBase<T> implements ListInterf
 
    private class IteratorForLinkedChainList implements Iterator<T>
    {
-      private Node prevNode = null;
-      private Node curNode = null;
       private int count = 0;
+      private Node curNode = null;
       
       private IteratorForLinkedChainList()
       {
@@ -86,15 +85,17 @@ public class LinkedChainList<T> extends LinkedChainBase<T> implements ListInterf
             throw new NoSuchElementException();
 
          T data = curNode.getData();
-         prevNode = curNode;
          curNode = curNode.getNextNode();
          count++;
+         
          return data;
       }
 
       public void remove()
       {
-         removeAfterNode(prevNode);
+         Node tmp = traverseToNodeAt(count);
+         System.out.println("node in remove: " + tmp.getData());
+         removeAfterNode(tmp);
       }
    }
 }
