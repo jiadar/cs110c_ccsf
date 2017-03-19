@@ -93,9 +93,16 @@ public class LinkedChainList<T> extends LinkedChainBase<T> implements ListInterf
 
       public void remove()
       {
-         Node tmp = traverseToNodeAt(count);
-         System.out.println("node in remove: " + tmp.getData());
-         removeAfterNode(tmp);
+         if (count == 1)
+         {
+            removeFirstNode();
+         }
+         else
+         {
+            Node tmp = traverseToNodeAt(count-1);
+            removeAfterNode(tmp);
+         }
+         count--;
       }
    }
 }

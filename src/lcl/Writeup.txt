@@ -1,1 +1,9 @@
-No comments
+I spent about 4 hours on this. 3 hours on the iterator and of that, 2.75 hours on
+trying to get a remove method that was better than O(n). I couldn't make it work by
+using a previous node, and the removeBeforeNode method. I'm sure there is a way to
+get it to work but I ran out of time, so I used a counter and traverseToNodeAt
+counter-1 , which works but is inefficient.
+
+
+
+
