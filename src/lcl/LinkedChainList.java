@@ -3,7 +3,7 @@ package lcl;
 import java.util.Iterator;
 import java.lang.UnsupportedOperationException;
 import java.lang.NullPointerException;
-import java.lang.NoSuchElementException;
+import java.util.NoSuchElementException;
 import java.lang.IllegalStateException;
 
 /**
@@ -99,9 +99,7 @@ public class LinkedChainList<T> extends LinkedChainBase<T> implements ListInterf
          if (count == 1)
             removeFirstNode();
          else
-         {
-            prevNode.setNextNode(curNode.getNextNode());
-         }
+            removeAfterNode(prevNode);
          count--;
       }
    }
