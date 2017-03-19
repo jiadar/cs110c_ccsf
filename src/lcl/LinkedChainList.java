@@ -46,7 +46,7 @@ public class LinkedChainList<T> extends LinkedChainBase<T> implements ListInterf
     }
 
     public T getEntry(int givenPosition) {
-        return null;
+       return traverseToNodeAt(givenPosition).getData();
     }
 
     public boolean contains(T anEntry) {
@@ -54,6 +54,33 @@ public class LinkedChainList<T> extends LinkedChainBase<T> implements ListInterf
     }
     
     public Iterator<T> iterator() {
-        return null;
+       private Node nextNode;
+       private Node curNode;
+
+       private Iterator()
+       {
+          if (isEmpty())
+             return null;
+          
+          curNode=getFirstNode();
+          nextNode=curNode.next;
+       }
+       
+       public boolean hasNext()
+       {
+          return curNode != null;
+       }
+
+       public T next()
+       {
+          curNode = curNode.next;
+          nextNode = nextNode.next;
+          return curNode;
+       }
+
+       public void remove()
+       {
+          return new UnsupportedOperationException();
+       }
     }
 }
