@@ -25,18 +25,24 @@ public class LinkedChainList<T> extends LinkedChainBase<T> implements ListInterf
     }
 
     public void add(T newEntry) {
-       Node nodeBefore = new Node();
-       nodeBefore = traverseToNodeAt(getLength());
-//       addAfterNode(nodeBefore, newEntry);
-       
+       add(getLength(), newEntry);
     }
 
     public void add(int newPosition, T newEntry) {
-
+       if (isEmpty())
+          addFirstNode(new Node(newEntry));
+       else
+          addAfterNode(traverseToNodeAt(newPosition), new Node(newEntry));                                        
     }
 
     public T replace(int givenPosition, T newEntry) {
-        return null;
+       addAfterNode(traverseToNodeAt(givenPosition), new Node(newEntry));
+
+       if (givenPosition == 1)
+          return removeFirstNode();
+
+       return removeAfterNode(traverseToNodeAt(givenPosition-1));
+
     }
 
     public T getEntry(int givenPosition) {
