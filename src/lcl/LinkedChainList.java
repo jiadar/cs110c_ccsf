@@ -1,5 +1,7 @@
 package lcl;
 
+import java.util.Iterator;
+
 /**
  * Created by schatz on 10/21/15.
  */
@@ -9,10 +11,7 @@ public class LinkedChainList<T> extends LinkedChainBase<T> implements ListInterf
         super();
     }
 
-    // Here is an example of how LinkedChainList's methods can be implemented
-    // using methods inherited from LinkedChainBase
     public T remove(int givenPosition) {
-        // Make sure we have a good index
         if (givenPosition < 1 || givenPosition > getLength()) {
             throw new IndexOutOfBoundsException("index: " + givenPosition);
         }
@@ -25,32 +24,29 @@ public class LinkedChainList<T> extends LinkedChainBase<T> implements ListInterf
         }
     }
 
-    // Stub
     public void add(T newEntry) {
-
+       Node nodeBefore = new Node();
+       nodeBefore = traverseToNodeAt(getLength());
+//       addAfterNode(nodeBefore, newEntry);
+       
     }
 
-    // Stub
     public void add(int newPosition, T newEntry) {
 
     }
 
-    // Stub
     public T replace(int givenPosition, T newEntry) {
         return null;
     }
 
-    // Stub
     public T getEntry(int givenPosition) {
         return null;
     }
 
-    // Stub
     public boolean contains(T anEntry) {
         return false;
     }
     
-    // Stub
     public Iterator<T> iterator() {
         return null;
     }

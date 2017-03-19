@@ -3,9 +3,9 @@
 # User Configurable 
 DEVHOME=/Users/ross/work
 PROJ="cs110c_ccsf"
-PKG="demo"
+PKG="lcl"
 VERBOSE=false
-CLASSES="Child1.java Child2.java Parent.java Tester.java"
+CLASSES="LinkedChainBase.java LinkedChainList.java ListInterface.java Tester.java" 
 
 # Should not have to configure anything below 
 LIBDIR=$DEVHOME/$PROJ/lib

@@ -1,7 +1,6 @@
 package lcl;
-
-
 import java.util.Iterator;
+
 
 
 /** An interface for the ADT list.
