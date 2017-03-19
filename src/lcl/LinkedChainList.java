@@ -94,13 +94,7 @@ public class LinkedChainList<T> extends LinkedChainBase<T> implements ListInterf
 
       public void remove()
       {
-         if (prevNode == null)
-            throw new IllegalStateException();
-         if (count == 1)
-            removeFirstNode();
-         else
-            removeAfterNode(prevNode);
-         count--;
+         removeAfterNode(prevNode);
       }
    }
 }
