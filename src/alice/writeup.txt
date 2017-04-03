@@ -1,0 +1,18 @@
+To clean the file I used a ruby script to replace everything that doesn't match a
+regular expression with a space. So I would have predictible spacing, if several
+characters matched in a row I replaced it with a single space. Now I can read each
+word as separated by a space. Note that this counts contractions as two words (for
+instance, they and (a)ll count as 2 separate words in this implemntation)
+
+The program took about an hour to write. I had the most trouble getting the keys from
+the max value, as you have to iterate over the entire keyset.
+
+I get the following results.
+
+Alice: 396
+Rabbit: 45
+Cheshire: 7
+Mad: 1
+Hatter: 55
+'the' occurs most often (1535 times).
+
