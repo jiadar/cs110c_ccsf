@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
-   public static void main(String[] args)
-   {
-      int SIZE=10000;
+   public static void main(String[] args) {
+      doSearch();
+   }
+
+   private static void doSearch() {
+      int SIZE=100000;
       long startTime, endTime, duration;
+
       System.out.println("Hello BST!");
       Btree<Integer>  b = new Btree<Integer>();
       ArrayList<Integer> a = new ArrayList<Integer>();
@@ -18,7 +22,6 @@ public class Main {
          a.add(num);
          b.add(num);
       }
-      System.out.println(a.toString());
 
       System.out.println("Searching BST...");
       startTime = System.nanoTime();
@@ -26,7 +29,7 @@ public class Main {
          b.contains(i);
       }
       endTime = System.nanoTime();
-      System.out.println("Binary Tree Search: " + (endTime - startTime)/1000000 + " ms");
+      System.out.println("Binary Tree Search: " + ms(startTime, endTime) + " ms");
       //      System.out.println(b.toString());
 
       System.out.println("Searching Array List...");
@@ -35,6 +38,10 @@ public class Main {
          a.contains(i);  
       }      
       endTime = System.nanoTime();
-      System.out.println("Array List Search: " + (endTime - startTime)/1000000 + " ms");
+      System.out.println("Array List Search: " + ms(startTime, endTime) + " ms");
+   }
+
+   private static String ms(long s, long e) {
+      return "" + (e-s)/1000000;        
    }
 }
