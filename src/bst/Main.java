@@ -7,14 +7,13 @@ public class Main {
       Btree<Integer>  b = new Btree<Integer>();
       System.out.println("adding 10");
       b.add(10);
+      System.out.println(b.preorder());
       System.out.println("adding 5");
-      b.printTree();
       b.add(5);
-      b.printTree();
+      System.out.println(b.preorder());
       System.out.println("adding 15");
-      b.printTree();
       b.add(15);
-      b.printTree();
+      System.out.println(b.preorder());
 
    }
 }
