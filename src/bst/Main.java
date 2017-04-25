@@ -13,8 +13,8 @@ public class Main {
       b.add(6);
       b.add(4);
       b.add(3);
-      b.preorder();
       System.out.println(b.toString());
-
+      System.out.print("Get entry test: ");
+      System.out.println(b.getEntry(Integer.valueOf(7)));
    }
 }
