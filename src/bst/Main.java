@@ -5,15 +5,16 @@ public class Main {
    {
       System.out.println("Hello BST");
       Btree<Integer>  b = new Btree<Integer>();
-      System.out.println("adding 10");
       b.add(10);
-      System.out.println(b.preorder());
-      System.out.println("adding 5");
       b.add(5);
-      System.out.println(b.preorder());
-      System.out.println("adding 15");
-      b.add(15);
-      System.out.println(b.preorder());
+      b.add(1);
+      b.add(7);
+      b.add(9);
+      b.add(6);
+      b.add(4);
+      b.add(3);
+      b.preorder();
+      System.out.println(b.toString());
 
    }
 }
