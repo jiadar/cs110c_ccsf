@@ -15,6 +15,6 @@ public class Main {
       b.add(3);
       System.out.println(b.toString());
       System.out.print("Get entry test: ");
-      System.out.println(b.getEntry(Integer.valueOf(7)));
+      System.out.println(b.getEntry(Integer.valueOf(6)));
    }
 }
